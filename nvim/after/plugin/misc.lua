@@ -1,0 +1,5 @@
+require("nvim-web-devicons").setup()
+require("nvim-ts-autotag").setup()
+require("nvim-autopairs").setup()
+require("Comment").setup()
+require("indent_blankline").setup({})

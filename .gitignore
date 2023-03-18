@@ -1,5 +1,8 @@
-*
+/*
+
 !.gitignore
 !README.md
-!nvim
+
 !starship.toml
+
+!/nvim
