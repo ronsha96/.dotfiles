@@ -43,3 +43,8 @@ vim.opt.wrap = false
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+-- neovide font
+vim.o.guifont = "NotoSansMono Nerd Font"
+-- vim.o.guifont = "Iosevka Nerd Font"
+-- vim.o.guifont = "Hack Nerd Font"
