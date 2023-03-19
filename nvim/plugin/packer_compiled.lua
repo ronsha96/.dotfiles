@@ -443,11 +443,11 @@ time([[Config for todo-comments.nvim]], false)
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-cmp ]]
 vim.cmd [[ packadd cmp-buffer ]]
-vim.cmd [[ packadd cmp-cmdline ]]
-vim.cmd [[ packadd cmp-nvim-lsp ]]
 vim.cmd [[ packadd cmp_luasnip ]]
-vim.cmd [[ packadd cmp-git ]]
 vim.cmd [[ packadd cmp-path ]]
+vim.cmd [[ packadd cmp-nvim-lsp ]]
+vim.cmd [[ packadd cmp-cmdline ]]
+vim.cmd [[ packadd cmp-git ]]
 time([[Sequenced loading]], false)
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
