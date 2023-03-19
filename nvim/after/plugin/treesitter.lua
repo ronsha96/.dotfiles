@@ -14,6 +14,7 @@ require("nvim-treesitter.configs").setup({
 		"rust",
 		"toml",
 		"markdown",
+		"markdown_inline",
 		"c",
 		"json",
 		"yaml",
@@ -25,6 +26,7 @@ require("nvim-treesitter.configs").setup({
 		"css",
 		"html",
 		"lua",
+		"vim",
 	},
 	autotag = {
 		enable = true,
