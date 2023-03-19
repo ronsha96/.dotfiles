@@ -2,6 +2,10 @@ local telescope = require("telescope")
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
+local history_file_name = "telescope_history.sqlite3"
+local history_path = is_windows() and os.getenv("localappdata") .. "\\share\\nvim\\databases\\" .. history_file_name
+	or "~/.local/share/nvim/databases/" .. history_file_name
+
 telescope.setup({
 	defaults = {
 		path_display = { "smart" },
@@ -18,7 +22,7 @@ telescope.setup({
 			},
 		},
 		history = {
-			path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
+			path = history_path,
 			limit = 100,
 		},
 		preview = {

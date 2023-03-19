@@ -1,5 +1,6 @@
 require("plugins")
 require("impatient")
+require("utils")
 require("options")
 require("remap")
 require("theme")
