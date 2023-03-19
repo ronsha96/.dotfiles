@@ -10,7 +10,17 @@ packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- Better type checking for config development
-	use("folke/neodev.nvim")
+	use({
+		"folke/neodev.nvim",
+		config = function()
+			require("neodev").setup({
+				library = {
+					types = true,
+					plugins = { "nvim-dap-ui" },
+				},
+			})
+		end,
+	})
 
 	-- Themes
 	use("ellisonleao/gruvbox.nvim")

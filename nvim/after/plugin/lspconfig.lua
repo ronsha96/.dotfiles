@@ -1,10 +1,10 @@
 -- neodev must be set up before lspconfig
-require("neodev").setup({
-	library = {
-		types = true,
-		plugins = { "nvim-dap-ui" },
-	},
-})
+-- require("neodev").setup({
+-- 	library = {
+-- 		types = true,
+-- 		plugins = { "nvim-dap-ui" },
+-- 	},
+-- })
 
 local lsp = require("lspconfig")
 local rust_tools = require("rust-tools")

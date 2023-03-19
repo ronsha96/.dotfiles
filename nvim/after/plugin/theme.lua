@@ -58,10 +58,10 @@ local function theme_kanagawa()
 	require("kanagawa").setup({
 		undercurl = true, -- enable undercurls
 		commentStyle = { italic = false },
-		functionStyle = {},
+		functionStyle = { italic = false },
 		keywordStyle = { italic = false },
-		statementStyle = { bold = true },
-		typeStyle = {},
+		statementStyle = { italic = false, bold = true },
+		typeStyle = { italic = false },
 		variablebuiltinStyle = { italic = false },
 		specialReturn = true, -- special highlight for the return keyword
 		specialException = true, -- special highlight for exception handling keywords
