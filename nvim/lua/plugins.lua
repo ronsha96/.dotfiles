@@ -134,13 +134,14 @@ packer.startup(function(use)
 	use("ThePrimeagen/harpoon")
 	use("andymass/vim-matchup")
 	use("akinsho/toggleterm.nvim")
+	use("romainl/vim-cool")
 	use("brooth/far.vim")
-	use("lukas-reineke/indent-blankline.nvim")
-	use("lewis6991/impatient.nvim")
 	use({
 		"goolord/alpha-nvim",
 		requires = { "nvim-tree/nvim-web-devicons" },
 	})
+	use("lukas-reineke/indent-blankline.nvim")
+	use("lewis6991/impatient.nvim")
 end)
 
 -- auto compile plugins
