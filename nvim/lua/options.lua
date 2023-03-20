@@ -17,7 +17,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.opt.incsearch = true
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 
 vim.opt.termguicolors = true
 
