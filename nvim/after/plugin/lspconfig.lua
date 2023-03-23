@@ -133,12 +133,14 @@ local liblldb_path = extension_path .. "/lldb/lib/liblldb.so" -- MacOS: This may
 
 rust_tools.setup({
 	tools = {
-		runnables = {
-			use_telescope = true,
-		},
+		-- runnables = {
+		-- 	use_telescope = true,
+		-- },
+		autoSetHints = true,
+		hover_with_actions = true,
 		inlay_hints = {
 			auto = true,
-			show_parameter_hints = false,
+			show_parameter_hints = true,
 			parameter_hints_prefix = "",
 			other_hints_prefix = "",
 		},
@@ -148,16 +150,23 @@ rust_tools.setup({
 	-- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
 	server = {
 		-- on_attach is a callback called when the language server attachs to the buffer
-		on_attach = function(client, bufnr)
-			on_attach(client, bufnr)
-		end,
+		on_attach = on_attach,
 		settings = {
 			-- to enable rust-analyzer settings visit:
 			-- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
 			["rust-analyzer"] = {
-				-- enable clippy on save
+				assist = {
+					importEnforceGranularity = true,
+					importPrefix = "crate",
+				},
+				cargo = {
+					allFeatures = true,
+				},
 				checkOnSave = {
 					command = "clippy",
+				},
+				procMacro = {
+					enable = true,
 				},
 			},
 		},
