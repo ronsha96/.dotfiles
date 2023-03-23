@@ -14,5 +14,5 @@ end
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 local opts = { noremap = true, silent = true }
-vim.keymap.set({ "n", "t" }, "<leader>to", "<Cmd>ToggleTerm size=20 direction=horizontal<CR>", opts)
-vim.keymap.set({ "n", "t" }, "<leader>tp", "<Cmd>ToggleTerm size=80 direction=vertical<CR>", opts)
+vim.keymap.set({ "n", "t" }, "<C-\\>", "<Cmd>ToggleTerm size=80 direction=vertical<CR>", opts)
+vim.keymap.set({ "n", "t" }, "<A-\\>", "<Cmd>ToggleTerm size=20 direction=horizontal<CR>", opts)
