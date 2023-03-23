@@ -176,20 +176,22 @@ rust_tools.setup({
 	},
 })
 
--- require("lsp-colors").setup({
--- 	Error = "#db4b4b",
--- 	Warning = "#e0af68",
--- 	Information = "#0db9d7",
--- 	Hint = "#10B981",
--- })
+lsp.yamlls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	settings = {
+		yaml = {
+			schemas = {
+				["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+				["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "compose.yaml",
+			},
+		},
+	},
+})
 
--- Show diagnostic popup on cursor hover
--- local diag_float_grp = vim.api.nvim_create_augroup("DiagnosticFloat", { clear = true })
--- vim.api.nvim_create_autocmd("CursorHold", {
--- 	callback = function()
--- 		vim.diagnostic.open_float(nil, { focusable = false })
--- 	end,
--- 	group = diag_float_grp,
--- })
+lsp.docker_compose_language_service.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 
 require("fidget").setup()
