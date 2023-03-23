@@ -667,6 +667,22 @@ key_bindings:
 
   # (Windows only)
   - { key: Return, mods: Alt, action: ToggleFullscreen }
+
+  # (Unlock special key combinations)
+  - { key: H, mods: Control|Shift, chars: "\x1b[72;6u" }
+  - { key: J, mods: Control|Shift, chars: "\x1b[74;6u" }
+  - { key: K, mods: Control|Shift, chars: "\x1b[75;6u" }
+  - { key: L, mods: Control|Shift, chars: "\x1b[76;6u" }
+  - { key: Slash, mods: Control|Shift, chars: "\x1b[47;6u" }
+
+  - { key: I, mods: Control, chars: "\x1b[105;5u" }
+
+  - { key: Period, mods: Control, chars: "\x1b[46;5u" }
+  - { key: Comma, mods: Control, chars: "\x1b[44;5u" }
+  - { key: Semicolon, mods: Control, chars: "\x1b[59;5u" }
+
+  - { key: Return, mods: Shift, chars: "\x1b[13;2u" }
+
 # (macOS only)
 #- { key: K,              mods: Command, mode: ~Vi|~Search, chars: "\x0c"                 }
 #- { key: K,              mods: Command, mode: ~Vi|~Search, action: ClearHistory          }
