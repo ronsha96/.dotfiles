@@ -155,12 +155,21 @@ rust_tools.setup({
 			-- to enable rust-analyzer settings visit:
 			-- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
 			["rust-analyzer"] = {
+				imports = {
+					granularity = {
+						group = "module",
+					},
+					prefix = "self",
+				},
 				assist = {
 					importEnforceGranularity = true,
 					importPrefix = "crate",
 				},
 				cargo = {
 					allFeatures = true,
+					buildScripts = {
+						enable = true,
+					},
 				},
 				checkOnSave = {
 					command = "clippy",
