@@ -11,20 +11,23 @@ lsp.ensure_installed({
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.on_attach(function(_, bufnr)
-	local bufopts = { buffer = bufnr, remap = false }
+	local opts = { buffer = bufnr, remap = false }
 
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set("n", "go", vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
-	vim.keymap.set("n", "gR", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "ga", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "gl", vim.diagnostic.open_float, bufopts)
-	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
-	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
-	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, bufopts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+	vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.rename, opts)
+	vim.keymap.set("n", "gR", vim.lsp.buf.references, opts)
+	vim.keymap.set("n", "ga", vim.lsp.buf.code_action, opts)
+	vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+	vim.keymap.set({ "n", "x" }, "<leader>f", function()
+		vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+	end, opts)
+	lsp.buffer_autoformat()
 end)
 
 lsp.setup()
@@ -219,24 +222,6 @@ vim.diagnostic.config({
 -- 	capabilities = capabilities,
 -- })
 
--- TODO: remove?
-local null_ls = require("null-ls")
-
-null_ls.setup({
-	on_attach = function(client, bufnr)
-		local bufopts = { buffer = bufnr, remap = false, silent = true }
-
-		if client.server_capabilities.documentFormattingProvider then
-			vim.keymap.set("n", "<leader>f", function()
-				vim.lsp.buf.format({ async = true })
-			end, bufopts)
-		end
-	end,
-	sources = {
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.taplo,
-	},
-})
 
 local luasnip = require("luasnip")
 
@@ -312,7 +297,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "path" },
 		{ name = "git" },
-		{ name = "buffer", keyword_length = 3 },
+		{ name = "buffer",  keyword_length = 3 },
 		{ name = "luasnip", keyword_length = 2 },
 	}),
 	formatting = {

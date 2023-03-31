@@ -28,10 +28,10 @@ require("lazy").setup({
 
 	-- Themes/Colors
 	{ "ellisonleao/gruvbox.nvim", lazy = true },
-	{ "Shatur/neovim-ayu", lazy = true },
-	{ "EdenEast/nightfox.nvim", lazy = true },
-	{ "folke/tokyonight.nvim", lazy = true },
-	{ "rebelot/kanagawa.nvim", lazy = true },
+	{ "Shatur/neovim-ayu",        lazy = true },
+	{ "EdenEast/nightfox.nvim",   lazy = true },
+	{ "folke/tokyonight.nvim",    lazy = true },
+	{ "rebelot/kanagawa.nvim",    lazy = true },
 
 	-- Tab line
 	"romgrk/barbar.nvim",
@@ -55,8 +55,6 @@ require("lazy").setup({
 			},
 			"williamboman/mason-lspconfig.nvim",
 			"onsails/lspkind-nvim",
-			-- TODO: remove?
-			-- "glepnir/lspsaga.nvim",
 			"j-hui/fidget.nvim",
 			"simrat39/rust-tools.nvim",
 
@@ -77,31 +75,9 @@ require("lazy").setup({
 		},
 	},
 
-	-- TODO: remove?
-	"jose-elias-alvarez/null-ls.nvim",
-
-	-- TODO: remove?
-	-- "neovim/nvim-lspconfig",
-	-- "glepnir/lspsaga.nvim",
-	-- "jose-elias-alvarez/null-ls.nvim",
-	-- "j-hui/fidget.nvim",
-	-- "simrat39/rust-tools.nvim",
-	-- { "akinsho/flutter-tools.nvim", lazy = true },
-	-- { "reisub0/hot-reload.vim", lazy = true },
-
-	-- TODO: remove?
-	-- Completion
-	-- "hrsh7th/nvim-cmp",
-	-- "hrsh7th/cmp-nvim-lsp",
-	-- "saadparwaiz1/cmp_luasnip",
-	-- "hrsh7th/cmp-buffer",
-	-- "hrsh7th/cmp-path",
-	-- "hrsh7th/cmp-cmdline",
-	-- "petertriho/cmp-git",
-
 	-- Flutter tools
 	{ "akinsho/flutter-tools.nvim", lazy = true },
-	{ "reisub0/hot-reload.vim", lazy = true },
+	{ "reisub0/hot-reload.vim",     lazy = true },
 
 	-- Run/Test/Debug
 	"stevearc/overseer.nvim",
@@ -123,7 +99,7 @@ require("lazy").setup({
 	"lewis6991/gitsigns.nvim",
 	"TimUntersberger/neogit",
 	"sindrets/diffview.nvim",
-	{ "akinsho/git-conflict.nvim", version = "*" },
+	{ "akinsho/git-conflict.nvim",     version = "*" },
 
 	-- Misc
 	{
