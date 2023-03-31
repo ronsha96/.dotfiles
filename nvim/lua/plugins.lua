@@ -185,7 +185,6 @@ require("lazy").setup({
 	{ "reisub0/hot-reload.vim",     event = "VeryLazy" },
 
 	-- Run/Test/Debug
-	{ "stevearc/overseer.nvim",     event = "VeryLazy" },
 	{ "mfussenegger/nvim-dap",      event = "VeryLazy" },
 	{ "rcarriga/nvim-dap-ui",       event = "VeryLazy" },
 
