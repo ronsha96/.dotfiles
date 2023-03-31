@@ -217,12 +217,14 @@ require("lazy").setup({
 	},
 	{
 		"windwp/nvim-ts-autotag",
+		event = "VeryLazy",
 		config = function()
 			require("nvim-ts-autotag").setup()
 		end
 	},
 	{
 		"windwp/nvim-autopairs",
+		event = "VeryLazy",
 		config = function()
 			require("nvim-autopairs").setup()
 		end
@@ -236,12 +238,14 @@ require("lazy").setup({
 	},
 	{
 		"numToStr/Comment.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("Comment").setup()
 		end
 	},
 	{
 		"folke/todo-comments.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("todo-comments").setup({})
 		end,
