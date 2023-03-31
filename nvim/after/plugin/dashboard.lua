@@ -174,7 +174,7 @@ local lazy_stats = require("lazy").stats()
 
 local footer = {
 	type = "text",
-	val = "󰏖 " .. lazy_stats.count .. " total plugins  |  󱐋 loaded " .. lazy_stats.loaded .. " plugins",
+	val = "󱐋 loaded " .. lazy_stats.loaded .. "/" .. lazy_stats.count .. " plugins",
 	opts = {
 		position = "center",
 		hl = "DiagnosticWarn",
