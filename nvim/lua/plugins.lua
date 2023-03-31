@@ -111,13 +111,10 @@ require("lazy").setup({
 
 	-- UI
 	{ "stevearc/dressing.nvim", event = "VeryLazy" },
-
-	-- Tab line
 	{ "romgrk/barbar.nvim",     event = "VeryLazy" },
-
-	-- Status line
 	{
 		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
 		dependencies = {
 			"arkav/lualine-lsp-progress"
 		}
