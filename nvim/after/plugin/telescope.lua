@@ -1,9 +1,11 @@
+local utils = require("utils")
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
 local history_file_name = "telescope_history.sqlite3"
-local history_path = is_windows() and os.getenv("localappdata") .. "\\share\\nvim\\databases\\" .. history_file_name
+local history_path = utils.is_windows()
+		and os.getenv("localappdata") .. "\\share\\nvim\\databases\\" .. history_file_name
 	or "~/.local/share/nvim/databases/" .. history_file_name
 
 telescope.setup({
@@ -64,7 +66,6 @@ telescope.setup({
 -- Extensions
 telescope.load_extension("fzy_native")
 telescope.load_extension("smart_history")
-telescope.load_extension("refactoring")
 telescope.load_extension("ui-select")
 telescope.load_extension("project")
 
@@ -126,8 +127,4 @@ end)
 
 vim.keymap.set("n", ";e", function()
 	builtin.diagnostics({})
-end)
-
-vim.keymap.set("v", "<leader>rr", function()
-	telescope.extensions.refactoring.refactors()
 end)

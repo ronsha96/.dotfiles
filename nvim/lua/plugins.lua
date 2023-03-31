@@ -1,16 +1,20 @@
-local status, packer = pcall(require, "packer")
-if not status then
-	print("Packer is not installed")
-	return
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
 end
 
-vim.cmd([[packadd packer.nvim]])
+vim.opt.rtp:prepend(lazypath)
 
-packer.startup(function(use)
-	use("wbthomason/packer.nvim")
-
+require("lazy").setup({
 	-- Better type checking for config development
-	use({
+	{
 		"folke/neodev.nvim",
 		config = function()
 			require("neodev").setup({
@@ -20,134 +24,111 @@ packer.startup(function(use)
 				},
 			})
 		end,
-	})
+	},
 
 	-- Themes
-	use("ellisonleao/gruvbox.nvim")
-	use("Shatur/neovim-ayu")
-	use("EdenEast/nightfox.nvim")
-	use("folke/tokyonight.nvim")
-	use("rebelot/kanagawa.nvim")
+	{ "ellisonleao/gruvbox.nvim" },
+	{ "Shatur/neovim-ayu" },
+	{ "EdenEast/nightfox.nvim" },
+	{ "folke/tokyonight.nvim" },
+	{ "rebelot/kanagawa.nvim" },
 
 	-- Lualine
-	use("arkav/lualine-lsp-progress")
-	use({
+	{ "arkav/lualine-lsp-progress" },
+	{
 		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
+	},
 
 	-- Lsp
-	use("neovim/nvim-lspconfig")
-	use("onsails/lspkind-nvim")
-	use("glepnir/lspsaga.nvim")
-	use("jose-elias-alvarez/null-ls.nvim")
-	use("j-hui/fidget.nvim")
-	use("simrat39/rust-tools.nvim")
-	use("akinsho/flutter-tools.nvim")
-	use("folke/lsp-colors.nvim")
-	use("nvim-lua/popup.nvim")
-	use("reisub0/hot-reload.vim") -- Use for hot-reloading flutter on save
+	{ "neovim/nvim-lspconfig" },
+	{ "onsails/lspkind-nvim" },
+	{ "glepnir/lspsaga.nvim" },
+	{ "jose-elias-alvarez/null-ls.nvim" },
+	{ "j-hui/fidget.nvim" },
+	{ "simrat39/rust-tools.nvim" },
+	{ "akinsho/flutter-tools.nvim" },
+	{ "folke/lsp-colors.nvim" },
+	{ "nvim-lua/popup.nvim" },
+	{ "reisub0/hot-reload.vim" }, -- Use for hot-reloading flutter on save
 
 	-- Completion
-	use("hrsh7th/nvim-cmp")
-	use({
+	{ "hrsh7th/nvim-cmp" },
+	{
 		"L3MON4D3/LuaSnip",
-		tag = "v1.*",
-		run = "make install_jsregexp",
-		requires = { "rafamadriz/friendly-snippets" },
-	})
-	use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
-	use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
-	use({ "petertriho/cmp-git", after = "nvim-cmp" })
+		version = "v1.*",
+		build = "make install_jsregexp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+	},
+	{ "saadparwaiz1/cmp_luasnip" },
+	{ "hrsh7th/cmp-nvim-lsp" },
+	{ "hrsh7th/cmp-buffer" },
+	{ "hrsh7th/cmp-path" },
+	{ "hrsh7th/cmp-cmdline" },
+	{ "petertriho/cmp-git" },
 
 	-- Run/Test/Debug
-	use("stevearc/overseer.nvim")
-	use("mfussenegger/nvim-dap")
-	use("rcarriga/nvim-dap-ui")
+	{ "stevearc/overseer.nvim" },
+	{ "mfussenegger/nvim-dap" },
+	{ "rcarriga/nvim-dap-ui" },
 
 	-- Telescope
-	use({ "nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { { "nvim-lua/plenary.nvim" } } })
-	use("kkharji/sqlite.lua")
-	use("nvim-telescope/telescope-file-browser.nvim")
-	use("nvim-telescope/telescope-smart-history.nvim")
-	use("nvim-telescope/telescope-fzy-native.nvim")
-	use("nvim-telescope/telescope-ui-select.nvim")
-	use("nvim-telescope/telescope-project.nvim")
+	{ "nvim-lua/plenary.nvim" },
+	{ "nvim-telescope/telescope.nvim", version = "0.1.0" },
+	{ "kkharji/sqlite.lua" },
+	{ "nvim-telescope/telescope-file-browser.nvim" },
+	{ "nvim-telescope/telescope-smart-history.nvim" },
+	{ "nvim-telescope/telescope-fzy-native.nvim" },
+	{ "nvim-telescope/telescope-ui-select.nvim" },
+	{ "nvim-telescope/telescope-project.nvim" },
 
 	-- Git
-	use("dinhhuy258/git.nvim")
-	use("lewis6991/gitsigns.nvim")
-	use({ "akinsho/git-conflict.nvim", tag = "*" })
-	use("TimUntersberger/neogit")
-	use("sindrets/diffview.nvim")
+	{ "dinhhuy258/git.nvim" },
+	{ "lewis6991/gitsigns.nvim" },
+	{ "akinsho/git-conflict.nvim", version = "*" },
+	{ "TimUntersberger/neogit" },
+	{ "sindrets/diffview.nvim" },
 
 	-- DB
-	use("tpope/vim-dadbod")
-	use("kristijanhusak/vim-dadbod-ui")
-	use("kristijanhusak/vim-dadbod-completion")
+	{ "tpope/vim-dadbod" },
+	{ "kristijanhusak/vim-dadbod-ui" },
+	{ "kristijanhusak/vim-dadbod-completion" },
 
 	-- Misc
-	use({
+	{
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-	})
-	use("windwp/nvim-ts-autotag")
-	use("windwp/nvim-autopairs")
-	use("nvim-tree/nvim-web-devicons")
-	use({ "romgrk/barbar.nvim", wants = "nvim-web-devicons" })
-	use("numToStr/Comment.nvim")
-	use({
+		build = ":TSUpdate",
+	},
+	{ "windwp/nvim-ts-autotag" },
+	{ "windwp/nvim-autopairs" },
+	{ "nvim-tree/nvim-web-devicons" },
+	{ "romgrk/barbar.nvim" },
+	{ "numToStr/Comment.nvim" },
+	{
 		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
 		config = function()
 			require("todo-comments").setup({})
 		end,
-	})
-	use({
+	},
+	{
 		"ggandor/leap.nvim",
 		keys = { "s", "S" },
 		config = function()
-			local leap = require("leap")
-			leap.set_default_keymaps()
+			require("leap").set_default_keymaps()
 		end,
-	})
-	use({
+	},
+	{
 		"nvim-tree/nvim-tree.lua",
-		requires = {
-			"nvim-tree/nvim-web-devicons", -- optional, for file icons
-		},
-		tag = "nightly", -- optional, updated every week. (see issue #1193)
-	})
-	use("mg979/vim-visual-multi")
-	use("derektata/lorem.nvim")
-	use({
-		"ThePrimeagen/refactoring.nvim",
-		requires = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
-	})
-	use("lambdalisue/suda.vim")
-	use("ThePrimeagen/harpoon")
-	use("andymass/vim-matchup")
-	use("akinsho/toggleterm.nvim")
-	use("romainl/vim-cool")
-	use("brooth/far.vim")
-	use({
+		version = "nightly",
+	},
+	{ "mg979/vim-visual-multi" },
+	{ "derektata/lorem.nvim" },
+	{ "lambdalisue/suda.vim" },
+	{ "ThePrimeagen/harpoon" },
+	{ "andymass/vim-matchup" },
+	{ "akinsho/toggleterm.nvim" },
+	{ "romainl/vim-cool" },
+	{
 		"goolord/alpha-nvim",
-		requires = { "nvim-tree/nvim-web-devicons" },
-	})
-	use("lukas-reineke/indent-blankline.nvim")
-	use("lewis6991/impatient.nvim")
-end)
-
--- auto compile plugins
-vim.cmd([[
-   augroup packer_user_config
-     autocmd!
-     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-   augroup end
-]])
+	},
+	{ "lukas-reineke/indent-blankline.nvim" },
+})

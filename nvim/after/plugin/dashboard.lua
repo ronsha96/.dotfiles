@@ -171,17 +171,7 @@ local buttons = {
 }
 
 local function get_plugin_count()
-	local count = 0
-	---@diagnostic disable-next-line: undefined-global
-	if packer_plugins then
-		---@diagnostic disable-next-line: undefined-global
-		count = #vim.tbl_keys(packer_plugins)
-	end
-	local status, lazy = pcall(require, "lazy")
-	if status then
-		count = lazy.stats().count
-	end
-	return count
+	return require("lazy").stats().count
 end
 
 local footer = {

@@ -12,12 +12,6 @@ null_ls.setup({
 	end,
 	sources = {
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.diagnostics.zsh,
 		null_ls.builtins.formatting.taplo,
-		null_ls.builtins.formatting.sqlfluff.with({
-			filetypes = { "sql", "mysql", "plsql" },
-			extra_args = { "--dialect", "mysql" },
-		}),
-		-- null_ls.builtins.formatting.rustfmt,
 	},
 })

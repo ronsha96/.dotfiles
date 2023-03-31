@@ -1,22 +1,10 @@
--- neodev must be set up before lspconfig
--- require("neodev").setup({
--- 	library = {
--- 		types = true,
--- 		plugins = { "nvim-dap-ui" },
--- 	},
--- })
-
 local lsp = require("lspconfig")
 local rust_tools = require("rust-tools")
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 local on_attach = function(_, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	-- vim.keymap.set("n", "gs", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
@@ -101,10 +89,6 @@ require("flutter-tools").setup({
 		capabilities = capabilities,
 	},
 })
--- lsp.dartls.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- })
 
 -- CSS
 lsp.cssls.setup({
@@ -137,7 +121,6 @@ rust_tools.setup({
 		-- 	use_telescope = true,
 		-- },
 		autoSetHints = true,
-		hover_with_actions = true,
 		inlay_hints = {
 			auto = true,
 			show_parameter_hints = true,
@@ -145,15 +128,9 @@ rust_tools.setup({
 			other_hints_prefix = "",
 		},
 	},
-	-- all the opts to send to nvim-lspconfig
-	-- these override the defaults set by rust-tools.nvim
-	-- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
 	server = {
-		-- on_attach is a callback called when the language server attachs to the buffer
 		on_attach = on_attach,
 		settings = {
-			-- to enable rust-analyzer settings visit:
-			-- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
 			["rust-analyzer"] = {
 				imports = {
 					granularity = {
