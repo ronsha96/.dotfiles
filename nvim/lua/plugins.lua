@@ -190,24 +190,23 @@ require("lazy").setup({
 	{ "rcarriga/nvim-dap-ui",       event = "VeryLazy" },
 
 	-- Telescope
-	{ "kkharji/sqlite.lua",         lazy = true },
 	{ "nvim-lua/plenary.nvim",      lazy = true },
 	{
 		"nvim-telescope/telescope.nvim",
 		version = "0.1.0",
-		event = "VeryLazy",
 		dependencies = {
 			{ "nvim-telescope/telescope-file-browser.nvim",  lazy = true },
 			{ "nvim-telescope/telescope-smart-history.nvim", lazy = true },
 			{ "nvim-telescope/telescope-fzy-native.nvim",    lazy = true },
 			{ "nvim-telescope/telescope-ui-select.nvim",     lazy = true },
 			{ "nvim-telescope/telescope-project.nvim",       lazy = true },
+			{ "kkharji/sqlite.lua",                          lazy = true },
 		}
 	},
 
 	-- Git
 	{ "dinhhuy258/git.nvim",       event = "BufEnter" },
-	{ "lewis6991/gitsigns.nvim" },
+	{ "lewis6991/gitsigns.nvim",   event = "BufEnter" },
 	{ "TimUntersberger/neogit",    event = "VeryLazy" },
 	{ "sindrets/diffview.nvim",    event = "VeryLazy" },
 	{ "akinsho/git-conflict.nvim", version = "*" },
