@@ -135,7 +135,7 @@ local function button(sc, txt, keybind, keybind_opts)
 		hl_shortcut = "Type",
 	}
 	if keybind then
-		keybind_opts = if_nil(keybind_opts, { noremap = true, silent = true, nowait = true })
+		keybind_opts = if_nil(keybind_opts, { remap = false, silent = true, nowait = true })
 		opts.keymap = { "n", sc_, keybind, keybind_opts }
 	end
 

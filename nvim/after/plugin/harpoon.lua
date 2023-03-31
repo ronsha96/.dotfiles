@@ -1,7 +1,7 @@
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
-local opts = { noremap = true, silent = false }
+local opts = { remap = false, silent = false }
 
 vim.keymap.set("n", "ma", mark.add_file, opts)
 vim.keymap.set("n", "mm", ui.toggle_quick_menu, opts)

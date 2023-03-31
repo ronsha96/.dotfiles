@@ -7,7 +7,7 @@ nvim_tree.setup({
 	},
 })
 
-local opts = { noremap = true, silent = false }
+local opts = { remap = false, silent = false }
 
 vim.keymap.set("n", "<leader>e", function()
 	api.tree.toggle()

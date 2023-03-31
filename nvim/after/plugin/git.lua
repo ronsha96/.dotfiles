@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = false }
+local opts = { remap = false, silent = false }
 
 -- General git tooling
 require("git").setup({

@@ -1,4 +1,4 @@
-local opts = { noremap = true }
+local opts = { remap = false }
 
 -- Run
 local overseer = require("overseer")

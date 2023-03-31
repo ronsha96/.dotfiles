@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true }
+local opts = { remap = false, silent = true }
 
 -- Leader
 vim.g.mapleader = " "
