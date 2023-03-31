@@ -2,7 +2,6 @@ local lsp = require("lspconfig")
 local rust_tools = require("rust-tools")
 
 local on_attach = function(_, bufnr)
-	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -11,9 +10,14 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "go", vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "gR", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("i", "gs", vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("n", "ga", vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "gl", vim.diagnostic.open_float, bufopts)
+	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
+	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
+	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, bufopts)
 	vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
 	vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
 	vim.keymap.set("n", "<leader>wl", function()
@@ -22,11 +26,6 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set("n", "<leader>f", function()
 		vim.lsp.buf.format({ async = true })
 	end, bufopts)
-	vim.keymap.set("n", "gp", "<Cmd>Lspsaga peek_definition<CR>", bufopts)
-	vim.keymap.set("n", "gr", "<Cmd>Lspsaga rename<CR>", bufopts)
-	vim.keymap.set("n", "ga", "<Cmd>Lspsaga code_action<CR>", bufopts)
-	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
-	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
 
 	-- require("lspsaga").setup({
 	-- 	server_filetype_map = {
