@@ -174,6 +174,3 @@ cmp.setup.cmdline(":", {
 })
 
 vim.cmd([[highlight! default link CmpItemKind CmpItemMenuDefault]])
-
--- Extras
-require("fidget").setup()

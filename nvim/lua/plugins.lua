@@ -137,8 +137,13 @@ require("lazy").setup({
 				end,
 			},
 			"williamboman/mason-lspconfig.nvim",
-			"onsails/lspkind-nvim",
-			"j-hui/fidget.nvim",
+			{
+				"j-hui/fidget.nvim",
+				event = "BufRead",
+				config = function()
+					require("fidget").setup({})
+				end
+			},
 
 			-- Completion
 			{
@@ -160,6 +165,7 @@ require("lazy").setup({
 					"hrsh7th/cmp-path",
 					"hrsh7th/cmp-cmdline",
 					"petertriho/cmp-git",
+					"onsails/lspkind-nvim",
 					"derektata/lorem.nvim",
 					{
 						"folke/neodev.nvim",
@@ -257,17 +263,18 @@ require("lazy").setup({
 		version = "nightly",
 		lazy = true
 	},
-	"mg979/vim-visual-multi",
-	"lambdalisue/suda.vim",
-	{ "ThePrimeagen/harpoon", lazy = true },
-	"andymass/vim-matchup",
-	"akinsho/toggleterm.nvim",
-	"romainl/vim-cool",
-	"goolord/alpha-nvim",
+	{ "ThePrimeagen/harpoon",    event = "VeryLazy" },
+	{ "mg979/vim-visual-multi",  event = "VeryLazy" },
+	{ "lambdalisue/suda.vim",    event = "VeryLazy" },
+	{ "andymass/vim-matchup",    event = "VeryLazy" },
+	{ "akinsho/toggleterm.nvim", event = "VeryLazy" },
+	{ "romainl/vim-cool",        event = "VeryLazy" },
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("indent_blankline").setup({})
 		end
 	},
+	"goolord/alpha-nvim",
 })
