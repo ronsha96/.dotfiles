@@ -156,6 +156,7 @@ require("lazy").setup({
 					"hrsh7th/cmp-path",
 					"hrsh7th/cmp-cmdline",
 					"petertriho/cmp-git",
+					"derektata/lorem.nvim",
 				}
 			},
 		},
@@ -181,11 +182,11 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope-project.nvim",       lazy = true },
 
 	-- Git
-	"dinhhuy258/git.nvim",
-	"lewis6991/gitsigns.nvim",
-	"TimUntersberger/neogit",
-	"sindrets/diffview.nvim",
-	{ "akinsho/git-conflict.nvim", version = "*" },
+	{ "dinhhuy258/git.nvim",                         event = "BufEnter" },
+	{ "lewis6991/gitsigns.nvim" },
+	{ "TimUntersberger/neogit",                      event = "VeryLazy" },
+	{ "sindrets/diffview.nvim",                      event = "VeryLazy" },
+	{ "akinsho/git-conflict.nvim",                   version = "*" },
 
 	-- Misc
 	{
@@ -233,11 +234,11 @@ require("lazy").setup({
 	{
 		"nvim-tree/nvim-tree.lua",
 		version = "nightly",
+		lazy = true
 	},
 	"mg979/vim-visual-multi",
-	"derektata/lorem.nvim",
 	"lambdalisue/suda.vim",
-	{ "ThePrimeagen/harpoon",      lazy = true },
+	{ "ThePrimeagen/harpoon", lazy = true },
 	"andymass/vim-matchup",
 	"akinsho/toggleterm.nvim",
 	"romainl/vim-cool",
