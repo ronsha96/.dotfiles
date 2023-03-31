@@ -8,8 +8,6 @@ lsp.ensure_installed({
 	"rust_analyzer",
 })
 
-lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
-
 lsp.on_attach(function(_, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
@@ -30,6 +28,66 @@ lsp.on_attach(function(_, bufnr)
 	lsp.buffer_autoformat()
 end)
 
+lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+
+lspconfig.tsserver.setup({
+	init_options = {
+		preferences = {
+			importModuleSpecifierPreference = "relative",
+		},
+	},
+	commands = {
+		OrganizeImports = {
+			function()
+				local params = {
+					command = "_typescript.organizeImports",
+					arguments = { vim.api.nvim_buf_get_name(0) },
+					title = "",
+				}
+				vim.lsp.buf.execute_command(params)
+			end,
+			description = "Organize Imports",
+		},
+	},
+})
+
+lspconfig.rust_analyzer.setup({
+	settings = {
+		['rust_analyzer'] = {
+			imports = {
+				granularity = {
+					group = "module",
+				},
+				prefix = "self",
+			},
+			assist = {
+				importEnforceGranularity = true,
+				importPrefix = "crate",
+			},
+			cargo = {
+				allFeatures = true,
+				buildScripts = {
+					enable = true,
+				},
+			},
+			checkOnSave = {
+				command = "clippy",
+			},
+			procMacro = {
+				enable = true,
+			},
+		}
+	}
+})
+
+local dart_lsp = lsp.build_options('dartls', {})
+
+require("flutter-tools").setup({
+	lsp = {
+		capabilities = dart_lsp.capabilities
+	}
+})
+
 lsp.setup()
 
 vim.diagnostic.config({
@@ -39,160 +97,14 @@ vim.diagnostic.config({
 	underline = false,
 })
 
--- TODO:
--- local function organize_imports()
--- 	local params = {
--- 		command = "_typescript.organizeImports",
--- 		arguments = { vim.api.nvim_buf_get_name(0) },
--- 		title = "",
--- 	}
--- 	vim.lsp.buf.execute_command(params)
--- end
-
--- TODO: typescript settings
--- -- TypeScript
--- lsp.tsserver.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- 	init_options = {
--- 		preferences = {
--- 			importModuleSpecifierPreference = "relative",
--- 		},
--- 	},
--- 	commands = {
--- 		OrganizeImports = {
--- 			organize_imports,
--- 			description = "Organize Imports",
--- 		},
--- 	},
--- })
---
--- Dart/Flutter
-require("flutter-tools").setup({})
-
--- -- Rust
--- TODO: rust analyzer settings
---
--- local extension_path = vim.env.HOME .. "/codelldb"
--- local codelldb_path = extension_path .. "/adapters/codelldb"
--- local liblldb_path = extension_path .. "/lldb/lib/liblldb.so" -- MacOS: This may be dylib
-
--- require("rust_tools").setup({
--- 	tools = {
--- 		-- runnables = {
--- 		-- 	use_telescope = true,
--- 		-- },
--- 		autoSetHints = true,
--- 		inlay_hints = {
--- 			auto = true,
--- 			show_parameter_hints = true,
--- 			parameter_hints_prefix = "",
--- 			other_hints_prefix = "",
--- 		},
--- 	},
--- 	server = {
--- 		on_attach = on_attach,
--- 		settings = {
--- 			["rust-analyzer"] = {
--- 				imports = {
--- 					granularity = {
--- 						group = "module",
--- 					},
--- 					prefix = "self",
--- 				},
--- 				assist = {
--- 					importEnforceGranularity = true,
--- 					importPrefix = "crate",
--- 				},
--- 				cargo = {
--- 					allFeatures = true,
--- 					buildScripts = {
--- 						enable = true,
--- 					},
--- 				},
--- 				checkOnSave = {
--- 					command = "clippy",
--- 				},
--- 				procMacro = {
--- 					enable = true,
--- 				},
--- 			},
--- 		},
--- 	},
--- 	dap = {
--- 		adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
--- 	},
--- })
-
--- lsp.yamlls.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- 	settings = {
--- 		yaml = {
--- 			schemas = {
--- 				["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
--- 				["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "compose.yaml",
--- 			},
--- 		},
--- 	},
--- })
---
--- lsp.docker_compose_language_service.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- })
-
+-- Completion
 
 local luasnip = require("luasnip")
 
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.filetype_extend("all", { "_" })
 
--- cmp
-
 local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-local has_words_before = function()
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-local next_item = cmp.mapping(function(fallback)
-	if cmp.visible() then
-		cmp.select_next_item(cmp_select)
-	elseif luasnip.expand_or_jumpable() then
-		luasnip.expand_or_jump()
-	elseif has_words_before() then
-		cmp.complete()
-	else
-		fallback()
-	end
-end, { "i", "s" })
-
-local previous_item = cmp.mapping(function(fallback)
-	if cmp.visible() then
-		cmp.select_prev_item(cmp_select)
-	elseif luasnip.jumpable(-1) then
-		luasnip.jump(-1)
-	else
-		fallback()
-	end
-end, { "i", "s" })
-
-local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<C-,>"] = cmp.mapping.complete(),
-	["<C-Space>"] = cmp.mapping.complete(),
-	["<C-e>"] = cmp.mapping.close(),
-	["<CR>"] = cmp.mapping.confirm({
-		select = true,
-		-- behavior = cmp.ConfirmBehavior.Replace,
-	}),
-	["<Down>"] = next_item,
-	["<Up>"] = previous_item,
-	["<Tab>"] = next_item,
-	["<S-Tab>"] = previous_item,
-})
 
 cmp.setup({
 	snippet = {
@@ -202,16 +114,10 @@ cmp.setup({
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-,>"] = cmp.mapping.complete(),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({
 			select = true,
 			-- behavior = cmp.ConfirmBehavior.Replace,
 		}),
-		["<Down>"] = next_item,
-		["<Up>"] = previous_item,
-		["<Tab>"] = next_item,
-		["<S-Tab>"] = previous_item,
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },

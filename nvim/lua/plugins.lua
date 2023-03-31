@@ -45,18 +45,17 @@ require("lazy").setup({
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v2.x",
 		dependencies = {
-			-- LSP Support
+			-- Lsp
 			"neovim/nvim-lspconfig",
 			{
 				"williamboman/mason.nvim",
 				build = function()
-					pcall(vim.cmd, "MasonUpdate")
+					vim.cmd [[MasonUpdate]]
 				end,
 			},
 			"williamboman/mason-lspconfig.nvim",
 			"onsails/lspkind-nvim",
 			"j-hui/fidget.nvim",
-			"simrat39/rust-tools.nvim",
 
 			-- Completion
 			"hrsh7th/nvim-cmp",
@@ -130,7 +129,7 @@ require("lazy").setup({
 	"mg979/vim-visual-multi",
 	"derektata/lorem.nvim",
 	"lambdalisue/suda.vim",
-	"ThePrimeagen/harpoon",
+	{ "ThePrimeagen/harpoon", lazy = true },
 	"andymass/vim-matchup",
 	"akinsho/toggleterm.nvim",
 	"romainl/vim-cool",
