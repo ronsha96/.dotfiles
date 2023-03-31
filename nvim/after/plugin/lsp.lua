@@ -6,45 +6,54 @@ local on_attach = function(_, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	-- vim.keymap.set("n", "gs", vim.lsp.buf.definition, bufopts)
+
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set("n", "go", vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+	vim.keymap.set("n", "gR", vim.lsp.buf.references, bufopts)
+	vim.keymap.set("i", "gs", vim.lsp.buf.signature_help, bufopts)
 	vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
 	vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
 	vim.keymap.set("n", "<leader>wl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, bufopts)
-	vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set("n", "gR", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<leader>f", function()
 		vim.lsp.buf.format({ async = true })
 	end, bufopts)
-
-	require("lspsaga").setup({
-		server_filetype_map = {
-			javascript = "javascript",
-			typescript = "typescript",
-			rust = "rust",
-			dart = "dart",
-		},
-		ui = {
-			theme = "round",
-			title = true,
-			border = "rounded",
-			colors = {
-				normal_bg = "NONE",
-			},
-		},
-	})
-
-	vim.keymap.set("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
-	vim.keymap.set("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
-	vim.keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<CR>", bufopts)
-	vim.keymap.set("n", "gd", "<Cmd>Lspsaga lsp_finder<CR>", bufopts)
-	vim.keymap.set("i", "<C-k>", "<Cmd>Lspsaga signature_help<CR>", bufopts)
-	vim.keymap.set("n", "gs", "<Cmd>Lspsaga goto_definition<CR>", bufopts)
 	vim.keymap.set("n", "gp", "<Cmd>Lspsaga peek_definition<CR>", bufopts)
 	vim.keymap.set("n", "gr", "<Cmd>Lspsaga rename<CR>", bufopts)
 	vim.keymap.set("n", "ga", "<Cmd>Lspsaga code_action<CR>", bufopts)
+	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
+	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
+
+	-- require("lspsaga").setup({
+	-- 	server_filetype_map = {
+	-- 		javascript = "javascript",
+	-- 		typescript = "typescript",
+	-- 		rust = "rust",
+	-- 		dart = "dart",
+	-- 	},
+	-- 	ui = {
+	-- 		theme = "round",
+	-- 		title = true,
+	-- 		border = "rounded",
+	-- 		colors = {
+	-- 			normal_bg = "NONE",
+	-- 		},
+	-- 	},
+	-- })
+
+	-- vim.keymap.set("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
+	-- vim.keymap.set("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
+	-- vim.keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<CR>", bufopts)
+	-- vim.keymap.set("n", "gd", "<Cmd>Lspsaga lsp_finder<CR>", bufopts)
+	-- vim.keymap.set("i", "<C-k>", "<Cmd>Lspsaga signature_help<CR>", bufopts)
+	-- vim.keymap.set("n", "gs", "<Cmd>Lspsaga goto_definition<CR>", bufopts)
+	-- vim.keymap.set("n", "gp", "<Cmd>Lspsaga peek_definition<CR>", bufopts)
+	-- vim.keymap.set("n", "gr", "<Cmd>Lspsaga rename<CR>", bufopts)
+	-- vim.keymap.set("n", "ga", "<Cmd>Lspsaga code_action<CR>", bufopts)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -199,3 +208,107 @@ null_ls.setup({
 		null_ls.builtins.formatting.taplo,
 	},
 })
+
+local luasnip = require("luasnip")
+
+require("luasnip.loaders.from_vscode").lazy_load()
+luasnip.filetype_extend("all", { "_" })
+
+local cmp = require("cmp")
+
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local next_item = cmp.mapping(function(fallback)
+	if cmp.visible() then
+		cmp.select_next_item()
+	elseif luasnip.expand_or_jumpable() then
+		luasnip.expand_or_jump()
+	elseif has_words_before() then
+		cmp.complete()
+	else
+		fallback()
+	end
+end, { "i", "s" })
+
+local previous_item = cmp.mapping(function(fallback)
+	if cmp.visible() then
+		cmp.select_prev_item()
+	elseif luasnip.jumpable(-1) then
+		luasnip.jump(-1)
+	else
+		fallback()
+	end
+end, { "i", "s" })
+
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end,
+	},
+	mapping = cmp.mapping.preset.insert({
+		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-,>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.close(),
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		}),
+		["<Down>"] = next_item,
+		["<Up>"] = previous_item,
+		["<Tab>"] = next_item,
+		["<S-Tab>"] = previous_item,
+	}),
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "path" },
+		{ name = "buffer" },
+		{ name = "git" },
+		{ name = "cmp_git" },
+	}),
+	formatting = {
+		format = require("lspkind").cmp_format({
+			mode = "symbol_text",
+			preset = "default",
+		}),
+	},
+	window = {
+		documentation = cmp.config.window.bordered(),
+	},
+})
+
+require("cmp_git").setup()
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype("gitcommit", {
+	sources = cmp.config.sources({
+		{ name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
+	}, {
+		{ name = "buffer" },
+	}),
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ "/", "?" }, {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "buffer" },
+	},
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}, {
+		{ name = "cmdline" },
+	}),
+})
+
+vim.cmd([[highlight! default link CmpItemKind CmpItemMenuDefault]])
