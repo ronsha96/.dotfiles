@@ -170,17 +170,18 @@ local buttons = {
 	},
 }
 
-local lazy_stats = require("lazy").stats()
-
 local footer = {
 	type = "text",
-	val = "󱐋 loaded "
-		.. lazy_stats.loaded
-		.. "/"
-		.. lazy_stats.count
-		.. " plugins in "
-		.. lazy_stats.startuptime
-		.. " ms",
+	val = function()
+		local lazy_stats = require("lazy").stats()
+		return "󱐋 loaded "
+			.. lazy_stats.loaded
+			.. "/"
+			.. lazy_stats.count
+			.. " plugins in "
+			.. string.format("%.2f", lazy_stats.startuptime)
+			.. " ms"
+	end,
 	opts = {
 		position = "center",
 		hl = "DiagnosticWarn",
@@ -204,10 +205,3 @@ local config = {
 }
 
 require("alpha").setup(config)
-
----@diagnostic disable-next-line: param-type-mismatch
-vim.api.nvim_create_autocmd({ "UIEnter" }, {
-	callback = function()
-		print(require("lazy").stats())
-	end,
-})
