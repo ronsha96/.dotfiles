@@ -117,7 +117,7 @@ require("lazy").setup({
 	},
 
 	-- UI
-	{ "stevearc/dressing.nvim",                      event = "VeryLazy" },
+	{ "stevearc/dressing.nvim",     event = "VeryLazy" },
 
 	-- Tab line
 	"romgrk/barbar.nvim",
@@ -166,30 +166,36 @@ require("lazy").setup({
 	},
 
 	-- Flutter tools
-	{ "akinsho/flutter-tools.nvim",                  event = "VeryLazy" },
-	{ "reisub0/hot-reload.vim",                      event = "VeryLazy" },
+	{ "akinsho/flutter-tools.nvim", event = "VeryLazy" },
+	{ "reisub0/hot-reload.vim",     event = "VeryLazy" },
 
 	-- Run/Test/Debug
-	{ "stevearc/overseer.nvim",                      event = "VeryLazy" },
-	{ "mfussenegger/nvim-dap",                       event = "VeryLazy" },
-	{ "rcarriga/nvim-dap-ui",                        event = "VeryLazy" },
+	{ "stevearc/overseer.nvim",     event = "VeryLazy" },
+	{ "mfussenegger/nvim-dap",      event = "VeryLazy" },
+	{ "rcarriga/nvim-dap-ui",       event = "VeryLazy" },
 
 	-- Telescope
-	{ "nvim-lua/plenary.nvim",                       lazy = true },
-	{ "nvim-telescope/telescope.nvim",               version = "0.1.0" },
-	{ "kkharji/sqlite.lua",                          lazy = true },
-	{ "nvim-telescope/telescope-file-browser.nvim",  lazy = true },
-	{ "nvim-telescope/telescope-smart-history.nvim", lazy = true },
-	{ "nvim-telescope/telescope-fzy-native.nvim",    lazy = true },
-	{ "nvim-telescope/telescope-ui-select.nvim",     lazy = true },
-	{ "nvim-telescope/telescope-project.nvim",       lazy = true },
+	{ "kkharji/sqlite.lua",         lazy = true },
+	{ "nvim-lua/plenary.nvim",      lazy = true },
+	{
+		"nvim-telescope/telescope.nvim",
+		version = "0.1.0",
+		event = "VeryLazy",
+		dependencies = {
+			{ "nvim-telescope/telescope-file-browser.nvim",  lazy = true },
+			{ "nvim-telescope/telescope-smart-history.nvim", lazy = true },
+			{ "nvim-telescope/telescope-fzy-native.nvim",    lazy = true },
+			{ "nvim-telescope/telescope-ui-select.nvim",     lazy = true },
+			{ "nvim-telescope/telescope-project.nvim",       lazy = true },
+		}
+	},
 
 	-- Git
-	{ "dinhhuy258/git.nvim",                         event = "BufEnter" },
+	{ "dinhhuy258/git.nvim",       event = "BufEnter" },
 	{ "lewis6991/gitsigns.nvim" },
-	{ "TimUntersberger/neogit",                      event = "VeryLazy" },
-	{ "sindrets/diffview.nvim",                      event = "VeryLazy" },
-	{ "akinsho/git-conflict.nvim",                   version = "*" },
+	{ "TimUntersberger/neogit",    event = "VeryLazy" },
+	{ "sindrets/diffview.nvim",    event = "VeryLazy" },
+	{ "akinsho/git-conflict.nvim", version = "*" },
 
 	-- Misc
 	{
