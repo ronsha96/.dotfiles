@@ -23,9 +23,7 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set("n", "<leader>wl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, bufopts)
-	vim.keymap.set("n", "<leader>f", function()
-		vim.lsp.buf.format({ async = true })
-	end, bufopts)
+	vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, bufopts)
 
 	-- require("lspsaga").setup({
 	-- 	server_filetype_map = {
