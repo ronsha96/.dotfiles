@@ -93,8 +93,14 @@ require("lazy").setup({
 				globalStatus = false,
 				terminalColors = true,
 				colors = {},
-				overrides = function()
-					return {}
+				overrides = function(colors)
+					local theme = colors.theme
+					return {
+						Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
+						PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+						PmenuSbar = { bg = theme.ui.bg_m1 },
+						PmenuThumb = { bg = theme.ui.bg_p2 },
+					}
 				end,
 				theme = "default",
 			})
@@ -151,21 +157,20 @@ require("lazy").setup({
 					"hrsh7th/cmp-cmdline",
 					"petertriho/cmp-git",
 					"derektata/lorem.nvim",
+					{
+						"folke/neodev.nvim",
+						config = function()
+							require("neodev").setup({
+								library = {
+									types = true,
+									plugins = { "nvim-dap-ui" },
+								},
+							})
+						end,
+					},
 				}
 			},
 		},
-	},
-	{
-		"folke/neodev.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("neodev").setup({
-				library = {
-					types = true,
-					plugins = { "nvim-dap-ui" },
-				},
-			})
-		end,
 	},
 
 	-- Flutter tools
