@@ -264,7 +264,6 @@ require("lazy").setup({
 	},
 	{ "ThePrimeagen/harpoon",    event = "VeryLazy" },
 	{ "mg979/vim-visual-multi",  event = "VeryLazy" },
-	{ "lambdalisue/suda.vim",    event = "VeryLazy" },
 	{ "andymass/vim-matchup",    event = "VeryLazy" },
 	{ "akinsho/toggleterm.nvim", event = "VeryLazy" },
 	{ "romainl/vim-cool",        event = "VeryLazy" },
