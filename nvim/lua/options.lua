@@ -8,6 +8,8 @@ end
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.opt.shadafile = ""
+
 vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.backspace = "indent,start,eol"
 vim.opt.clipboard = "unnamedplus"
