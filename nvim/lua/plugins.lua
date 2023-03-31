@@ -116,6 +116,9 @@ require("lazy").setup({
 		end
 	},
 
+	-- UI
+	{ "stevearc/dressing.nvim",                      event = "VeryLazy" },
+
 	-- Tab line
 	"romgrk/barbar.nvim",
 
