@@ -73,13 +73,6 @@ cmp.setup({
 
 require("cmp_git").setup()
 
--- Apply completions to SQL files
-cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
-	sources = {
-		{ name = "vim-dadbod-completion" },
-	},
-})
-
 -- Set configuration for specific filetype.
 cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({

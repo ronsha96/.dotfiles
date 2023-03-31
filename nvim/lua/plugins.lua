@@ -89,11 +89,6 @@ require("lazy").setup({
 	"sindrets/diffview.nvim",
 	{ "akinsho/git-conflict.nvim", version = "*" },
 
-	-- DB
-	"tpope/vim-dadbod",
-	"kristijanhusak/vim-dadbod-ui",
-	"kristijanhusak/vim-dadbod-completion",
-
 	-- Misc
 	{
 		"nvim-treesitter/nvim-treesitter",
