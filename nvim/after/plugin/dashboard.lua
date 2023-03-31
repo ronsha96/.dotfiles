@@ -1,4 +1,3 @@
-local dashboard = require("alpha.themes.dashboard")
 local if_nil = vim.F.if_nil
 
 local leader = "SPC"
@@ -159,11 +158,12 @@ local buttons = {
 		button(
 			"p",
 			"  Find project",
-			":lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>",
+			"<Cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>",
 			{}
 		),
-		button("r", "  Recent files", ":lua require'telescope.builtin'.oldfiles{}<CR>", {}),
-		button("q", "ﰌ  Quit", ":qa<CR>", {}),
+		button("r", "  Recent files", "<Cmd>lua require'telescope.builtin'.oldfiles{}<CR>", {}),
+		button("l", "󰏖  Open lazy", "<Cmd>Lazy<CR>", {}),
+		button("q", "ﰌ  Quit", "<Cmd>qa<CR>", {}),
 	},
 	opts = {
 		spacing = 1,
@@ -174,7 +174,13 @@ local lazy_stats = require("lazy").stats()
 
 local footer = {
 	type = "text",
-	val = "󱐋 loaded " .. lazy_stats.loaded .. "/" .. lazy_stats.count .. " plugins",
+	val = "󱐋 loaded "
+		.. lazy_stats.loaded
+		.. "/"
+		.. lazy_stats.count
+		.. " plugins in "
+		.. lazy_stats.startuptime
+		.. " ms",
 	opts = {
 		position = "center",
 		hl = "DiagnosticWarn",
@@ -198,3 +204,10 @@ local config = {
 }
 
 require("alpha").setup(config)
+
+---@diagnostic disable-next-line: param-type-mismatch
+vim.api.nvim_create_autocmd({ "UIEnter" }, {
+	callback = function()
+		print(require("lazy").stats())
+	end,
+})

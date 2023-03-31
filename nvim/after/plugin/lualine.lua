@@ -23,7 +23,12 @@ require("lualine").setup({
 				sources = { "nvim_diagnostic" },
 				symbols = { error = " ", warn = " ", info = " ", hint = " " },
 			},
-			"encoding",
+			{
+				require("lazy.status").updates,
+				cond = require("lazy.status").has_updates,
+				-- color = { fg = "ff9e64" },
+			},
+			-- "encoding",
 			"filetype",
 		},
 		lualine_y = { "progress" },
