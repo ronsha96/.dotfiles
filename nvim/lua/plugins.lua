@@ -27,11 +27,11 @@ require("lazy").setup({
 	},
 
 	-- Themes
-	{ "ellisonleao/gruvbox.nvim" },
-	{ "Shatur/neovim-ayu" },
-	{ "EdenEast/nightfox.nvim" },
-	{ "folke/tokyonight.nvim" },
-	{ "rebelot/kanagawa.nvim" },
+	{ "ellisonleao/gruvbox.nvim", lazy = true },
+	{ "Shatur/neovim-ayu", lazy = true },
+	{ "EdenEast/nightfox.nvim", lazy = true },
+	{ "folke/tokyonight.nvim", lazy = true },
+	{ "rebelot/kanagawa.nvim", lazy = true },
 
 	-- Lualine
 	{ "arkav/lualine-lsp-progress" },
