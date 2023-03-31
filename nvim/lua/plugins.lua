@@ -10,6 +10,8 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 
+
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
@@ -147,9 +149,13 @@ require("lazy").setup({
 					"hrsh7th/cmp-nvim-lsp",
 					{
 						"L3MON4D3/LuaSnip",
+						event = "InsertCharPre",
 						version = "v1.*",
 						build = "make install_jsregexp",
-						dependencies = { "rafamadriz/friendly-snippets" },
+						dependencies = { {
+							"rafamadriz/friendly-snippets",
+							event = "InsertCharPre",
+						} },
 					},
 					"saadparwaiz1/cmp_luasnip",
 					"hrsh7th/cmp-buffer",
