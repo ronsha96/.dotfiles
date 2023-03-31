@@ -11,13 +11,6 @@ local history_path = utils.is_windows()
 telescope.setup({
 	defaults = {
 		path_display = { "smart" },
-		-- file_ignore_patterns = {
-		-- 	"node_modules",
-		-- 	"build",
-		-- 	"dist",
-		-- 	"yarn.lock",
-		-- 	".git",
-		-- },
 		mappings = {
 			n = {
 				["q"] = actions.close,
@@ -72,14 +65,14 @@ telescope.load_extension("project")
 -- Mappings
 
 vim.keymap.set("n", ";f", function()
-	builtin.git_files({
+	builtin.find_files({
 		no_ignore = false,
 		hidden = true,
 	})
 end)
 
-vim.keymap.set("n", ";d", function()
-	builtin.find_files({
+vim.keymap.set("n", ";g", function()
+	builtin.git_files({
 		no_ignore = false,
 		hidden = true,
 	})
