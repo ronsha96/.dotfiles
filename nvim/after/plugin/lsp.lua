@@ -39,65 +39,7 @@ vim.diagnostic.config({
 	underline = false,
 })
 
--- TODO: remove?
--- local lsp = require("lspconfig")
-
--- local on_attach = function(_, bufnr)
--- 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
---
--- 	local bufopts = { buffer = bufnr, remap = false, silent = true }
---
--- 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
--- 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
--- 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
--- 	vim.keymap.set("n", "go", vim.lsp.buf.type_definition, bufopts)
--- 	vim.keymap.set("n", "gr", vim.lsp.buf.rename, bufopts)
--- 	vim.keymap.set("n", "gR", vim.lsp.buf.references, bufopts)
--- 	vim.keymap.set("n", "ga", vim.lsp.buf.code_action, bufopts)
--- 	vim.keymap.set("n", "gl", vim.diagnostic.open_float, bufopts)
--- 	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
--- 	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
--- 	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, bufopts)
--- 	vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, bufopts)
---
--- 	-- require("lspsaga").setup({
--- 	-- 	server_filetype_map = {
--- 	-- 		javascript = "javascript",
--- 	-- 		typescript = "typescript",
--- 	-- 		rust = "rust",
--- 	-- 		dart = "dart",
--- 	-- 	},
--- 	-- 	ui = {
--- 	-- 		theme = "round",
--- 	-- 		title = true,
--- 	-- 		border = "rounded",
--- 	-- 		colors = {
--- 	-- 			normal_bg = "NONE",
--- 	-- 		},
--- 	-- 	},
--- 	-- })
---
--- 	-- vim.keymap.set("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", bufopts)
--- 	-- vim.keymap.set("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
--- 	-- vim.keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<CR>", bufopts)
--- 	-- vim.keymap.set("n", "gd", "<Cmd>Lspsaga lsp_finder<CR>", bufopts)
--- 	-- vim.keymap.set("i", "<C-k>", "<Cmd>Lspsaga signature_help<CR>", bufopts)
--- 	-- vim.keymap.set("n", "gs", "<Cmd>Lspsaga goto_definition<CR>", bufopts)
--- 	-- vim.keymap.set("n", "gp", "<Cmd>Lspsaga peek_definition<CR>", bufopts)
--- 	-- vim.keymap.set("n", "gr", "<Cmd>Lspsaga rename<CR>", bufopts)
--- 	-- vim.keymap.set("n", "ga", "<Cmd>Lspsaga code_action<CR>", bufopts)
--- end
-
--- Underline errors
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
--- 	virtual_text = true,
--- 	signs = true,
--- 	update_in_insert = false,
--- 	underline = true,
--- })
-
--- local capabilities = require("cmp_nvim_lsp").default_capabilities()
---
+-- TODO:
 -- local function organize_imports()
 -- 	local params = {
 -- 		command = "_typescript.organizeImports",
@@ -106,7 +48,8 @@ vim.diagnostic.config({
 -- 	}
 -- 	vim.lsp.buf.execute_command(params)
 -- end
---
+
+-- TODO: typescript settings
 -- -- TypeScript
 -- lsp.tsserver.setup({
 -- 	on_attach = on_attach,
@@ -124,34 +67,11 @@ vim.diagnostic.config({
 -- 	},
 -- })
 --
--- -- Dart/Flutter
--- require("flutter-tools").setup({
--- 	lsp = {
--- 		on_attach = on_attach,
--- 		capabilities = capabilities,
--- 	},
--- })
---
--- -- CSS
--- lsp.cssls.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- 	cmd = { "vscode-css-language-server", "--stdio" },
--- })
---
--- -- Lua
--- lsp.lua_ls.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- })
---
--- -- Python
--- lsp.pyright.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- })
---
+-- Dart/Flutter
+require("flutter-tools").setup({})
+
 -- -- Rust
+-- TODO: rust analyzer settings
 --
 -- local extension_path = vim.env.HOME .. "/codelldb"
 -- local codelldb_path = extension_path .. "/adapters/codelldb"
