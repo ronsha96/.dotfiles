@@ -13,19 +13,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	-- Better type checking for config development
-	{
-		"folke/neodev.nvim",
-		config = function()
-			require("neodev").setup({
-				library = {
-					types = true,
-					plugins = { "nvim-dap-ui" },
-				},
-			})
-		end,
-	},
-
 	-- Themes/Colors
 	{
 		"ellisonleao/gruvbox.nvim",
@@ -92,24 +79,24 @@ require("lazy").setup({
 		enabled = true,
 		config = function()
 			require("kanagawa").setup({
-				undercurl = true, -- enable undercurls
+				undercurl = true,
 				commentStyle = { italic = false },
 				functionStyle = { italic = false },
 				keywordStyle = { italic = false },
 				statementStyle = { italic = false, bold = true },
 				typeStyle = { italic = false },
 				variablebuiltinStyle = { italic = false },
-				specialReturn = true, -- special highlight for the return keyword
-				specialException = true, -- special highlight for exception handling keywords
-				transparent = false, -- do not set background color
-				dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-				globalStatus = false, -- adjust window separators highlight for laststatus=3
-				terminalColors = true, -- define vim.g.terminal_color_{0,17}
+				specialReturn = true,
+				specialException = true,
+				transparent = false,
+				dimInactive = false,
+				globalStatus = false,
+				terminalColors = true,
 				colors = {},
 				overrides = function()
 					return {}
 				end,
-				theme = "default", -- Load "default" theme or the experimental "light" theme
+				theme = "default",
 			})
 
 			vim.cmd([[colorscheme kanagawa]])
@@ -117,14 +104,18 @@ require("lazy").setup({
 	},
 
 	-- UI
-	{ "stevearc/dressing.nvim",     event = "VeryLazy" },
+	{ "stevearc/dressing.nvim", event = "VeryLazy" },
 
 	-- Tab line
-	"romgrk/barbar.nvim",
+	{ "romgrk/barbar.nvim",     event = "VeryLazy" },
 
 	-- Status line
-	"nvim-lualine/lualine.nvim",
-	"arkav/lualine-lsp-progress",
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = {
+			"arkav/lualine-lsp-progress"
+		}
+	},
 
 	-- Lsp
 	{
@@ -163,6 +154,18 @@ require("lazy").setup({
 				}
 			},
 		},
+	},
+	{
+		"folke/neodev.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("neodev").setup({
+				library = {
+					types = true,
+					plugins = { "nvim-dap-ui" },
+				},
+			})
+		end,
 	},
 
 	-- Flutter tools
