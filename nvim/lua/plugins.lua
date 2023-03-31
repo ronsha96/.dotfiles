@@ -141,6 +141,7 @@ require("lazy").setup({
 					require("fidget").setup({})
 				end
 			},
+			"simrat39/rust-tools.nvim",
 
 			-- Completion
 			{

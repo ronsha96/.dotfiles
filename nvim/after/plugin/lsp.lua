@@ -8,6 +8,8 @@ lsp.ensure_installed({
 	"rust_analyzer",
 })
 
+lsp.skip_server_setup({ "rust_analyzer" })
+
 lsp.on_attach(function(_, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
@@ -17,12 +19,12 @@ lsp.on_attach(function(_, bufnr)
 	vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.rename, opts)
 	vim.keymap.set("n", "gR", vim.lsp.buf.references, opts)
-	vim.keymap.set("n", "ga", vim.lsp.buf.code_action, opts)
+	vim.keymap.set({ "n", "v" }, "ga", vim.lsp.buf.code_action, opts)
 	vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
 	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 	vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-	vim.keymap.set({ "n", "x" }, "<leader>f", function()
+	vim.keymap.set({ "n", "v", "x" }, "<leader>f", function()
 		vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
 	end, opts)
 	lsp.buffer_autoformat()
@@ -51,9 +53,17 @@ lspconfig.tsserver.setup({
 	},
 })
 
-lspconfig.rust_analyzer.setup({
+local rust_tools = require("rust-tools")
+
+rust_tools.setup({
+	-- server = {
+	-- 	on_attach = function(_, bufnr)
+	-- 		vim.keymap.set("n", "<leader>ca", rust_tools.hover_actions.hover_actions, { remap = false, buffer = bufnr })
+	-- 		vim.keymap.set("n", "ga", rust_tools.code_action_group.code_action_group, { remap = true, buffer = bufnr })
+	-- 	end
+	-- },
 	settings = {
-		['rust_analyzer'] = {
+		["rust_analyzer"] = {
 			imports = {
 				granularity = {
 					group = "module",
@@ -80,7 +90,7 @@ lspconfig.rust_analyzer.setup({
 	}
 })
 
-local dart_lsp = lsp.build_options('dartls', {})
+local dart_lsp = lsp.build_options("dartls", {})
 
 require("flutter-tools").setup({
 	lsp = {
@@ -104,11 +114,11 @@ local luasnip = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.filetype_extend("all", { "_" })
 
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp = require("cmp")
 
 cmp.event:on(
-	'confirm_done',
+	"confirm_done",
 	cmp_autopairs.on_confirm_done()
 )
 
