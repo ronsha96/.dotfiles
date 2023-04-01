@@ -79,6 +79,7 @@ require("lazy").setup({
 		enabled = true,
 		config = function()
 			require("kanagawa").setup({
+				compile = false,
 				undercurl = true,
 				commentStyle = { italic = false },
 				functionStyle = { italic = false },
@@ -92,17 +93,39 @@ require("lazy").setup({
 				dimInactive = false,
 				globalStatus = false,
 				terminalColors = true,
-				colors = {},
+				colors = {
+					theme = {
+						all = {
+							ui = {
+								float = {
+									bg = "none"
+								}
+							}
+						}
+					}
+				},
 				overrides = function(colors)
 					local theme = colors.theme
 					return {
+						-- cmp-nvim
 						Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
 						PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
 						PmenuSbar = { bg = theme.ui.bg_m1 },
 						PmenuThumb = { bg = theme.ui.bg_p2 },
+						-- transparent floats
+						NormalFloat = { bg = "none" },
+						FloatBorder = { bg = "none" },
+						FloatTitle = { bg = "none" },
+						NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+						LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+						MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
 					}
 				end,
-				theme = "default",
+				theme = "wave",
+				background = {
+					dark = "wave",
+					light = "lotus",
+				}
 			})
 
 			vim.cmd([[colorscheme kanagawa]])
@@ -120,9 +143,9 @@ require("lazy").setup({
 					insert_only = false,
 					start_in_insert = true,
 					win_options = {
-						winblend = 5,
+						winblend = 0,
 						wrap = false,
-					}
+					},
 				},
 				select = {
 					telescope = require('telescope.themes').get_cursor()

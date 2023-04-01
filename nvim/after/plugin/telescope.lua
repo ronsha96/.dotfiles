@@ -20,24 +20,54 @@ telescope.setup({
 			path = history_path,
 			limit = 100,
 		},
-		preview = {
-			filesize_hook = function(filepath, bufnr, opts)
-				local max_bytes = 10000
-				local cmd = { "head", "-c", max_bytes, filepath }
-				require("telescope.previewers.utils").job_maker(cmd, bufnr, opts)
-			end,
+		-- preview = {
+		-- 	filesize_hook = function(filepath, bufnr, opts)
+		-- 		local max_bytes = 10000
+		-- 		local cmd = { "head", "-c", max_bytes, filepath }
+		-- 		require("telescope.previewers.utils").job_maker(cmd, bufnr, opts)
+		-- 	end,
+		-- },
+		-- vimgrep_arguments = {
+		-- 	"rg",
+		-- 	"-L",
+		-- 	"--color=never",
+		-- 	"--no-heading",
+		-- 	"--with-filename",
+		-- 	"--line-number",
+		-- 	"--column",
+		-- 	"--smart-case",
+		-- },
+		prompt_prefix = "   ",
+		selection_caret = "󰅂 ",
+		entry_prefix = "  ",
+		initial_mode = "insert",
+		selection_strategy = "reset",
+		sorting_strategy = "ascending",
+		layout_strategy = "horizontal",
+		layout_config = {
+			horizontal = {
+				prompt_position = "top",
+				preview_width = 0.55,
+				results_width = 0.8,
+			},
+			vertical = {
+				mirror = false,
+			},
+			width = 0.87,
+			height = 0.80,
+			preview_cutoff = 120,
 		},
+		file_ignore_patterns = { "node_modules" },
+		winblend = 0,
+		border = {},
+		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+		color_devicons = true,
+		set_env = { ["COLORTERM"] = "truecolor" },
+		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 	},
-	-- pickers = {
-	-- 	find_files = { theme = "dropdown" },
-	-- 	git_files = { theme = "dropdown" },
-	-- 	live_grep = { theme = "dropdown" },
-	-- 	grep_string = { theme = "dropdown" },
-	-- 	commands = { theme = "dropdown" },
-	-- 	buffers = { theme = "dropdown" },
-	-- 	colorscheme = { theme = "dropdown" },
-	-- 	diagnostics = { theme = "dropdown" },
-	-- },
 })
 
 -- Extensions
