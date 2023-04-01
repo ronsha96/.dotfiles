@@ -27,33 +27,17 @@ telescope.setup({
 				require("telescope.previewers.utils").job_maker(cmd, bufnr, opts)
 			end,
 		},
-		pickers = {
-			find_files = {
-				theme = "dropdown",
-			},
-			git_files = {
-				theme = "dropdown",
-			},
-			live_grep = {
-				theme = "dropdown",
-			},
-			grep_string = {
-				theme = "dropdown",
-			},
-			commands = {
-				theme = "dropdown",
-			},
-			buffers = {
-				theme = "dropdown",
-			},
-			colorscheme = {
-				theme = "dropdown",
-			},
-			diagnostics = {
-				theme = "dropdown",
-			},
-		},
 	},
+	-- pickers = {
+	-- 	find_files = { theme = "dropdown" },
+	-- 	git_files = { theme = "dropdown" },
+	-- 	live_grep = { theme = "dropdown" },
+	-- 	grep_string = { theme = "dropdown" },
+	-- 	commands = { theme = "dropdown" },
+	-- 	buffers = { theme = "dropdown" },
+	-- 	colorscheme = { theme = "dropdown" },
+	-- 	diagnostics = { theme = "dropdown" },
+	-- },
 })
 
 -- Extensions
