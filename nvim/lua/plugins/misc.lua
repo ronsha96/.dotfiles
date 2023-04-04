@@ -22,4 +22,33 @@ return {
 			require("todo-comments").setup({})
 		end,
 	},
+	{
+		"nvim-tree/nvim-web-devicons",
+		lazy = true,
+		config = function()
+			require("nvim-web-devicons").setup()
+		end
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("indent_blankline").setup({})
+		end
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = "InsertEnter",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = function()
+			require("nvim-autopairs").setup()
+		end
+	},
+	{ "brooth/far.vim", event = "VeryLazy" },
 }

@@ -137,34 +137,5 @@ return {
 			"nvim-treesitter/nvim-treesitter-context"
 		}
 	},
-	{
-		"windwp/nvim-ts-autotag",
-		event = "VeryLazy",
-		config = function()
-			require("nvim-ts-autotag").setup()
-		end
-	},
-	{
-		"windwp/nvim-autopairs",
-		event = "VeryLazy",
-		config = function()
-			require("nvim-autopairs").setup()
-		end
-	},
-	{
-		"nvim-tree/nvim-web-devicons",
-		lazy = true,
-		config = function()
-			require("nvim-web-devicons").setup()
-		end
-	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("indent_blankline").setup({})
-		end
-	},
 	"goolord/alpha-nvim",
-	"brooth/far.vim",
 }
