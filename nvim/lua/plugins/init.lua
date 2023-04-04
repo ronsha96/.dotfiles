@@ -64,23 +64,4 @@ return {
 	-- Flutter tools
 	{ "akinsho/flutter-tools.nvim", event = "VeryLazy" },
 	{ "reisub0/hot-reload.vim",     event = "VeryLazy" },
-
-	-- Run/Test/Debug
-	{ "mfussenegger/nvim-dap",      event = "VeryLazy" },
-	{ "rcarriga/nvim-dap-ui",       event = "VeryLazy" },
-
-	-- Telescope
-	{ "nvim-lua/plenary.nvim",      lazy = true },
-	{
-		"nvim-telescope/telescope.nvim",
-		version = "0.1.0",
-		dependencies = {
-			{ "nvim-telescope/telescope-file-browser.nvim",  lazy = true },
-			{ "nvim-telescope/telescope-smart-history.nvim", lazy = true },
-			{ "nvim-telescope/telescope-fzy-native.nvim",    lazy = true },
-			{ "nvim-telescope/telescope-ui-select.nvim",     lazy = true },
-			{ "nvim-telescope/telescope-project.nvim",       lazy = true },
-			{ "kkharji/sqlite.lua",                          lazy = true },
-		}
-	},
 }
