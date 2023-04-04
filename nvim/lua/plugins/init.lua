@@ -159,30 +159,6 @@ return {
 		end
 	},
 	{
-		"numToStr/Comment.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("Comment").setup()
-		end
-	},
-	{
-		"folke/todo-comments.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("todo-comments").setup({})
-		end,
-	},
-	{
-		"ggandor/leap.nvim",
-		keys = { "s", "S" },
-		config = function()
-			require("leap").set_default_keymaps()
-		end,
-	},
-	{ "andymass/vim-matchup",    event = "VeryLazy" },
-	{ "akinsho/toggleterm.nvim", event = "VeryLazy" },
-	{ "romainl/vim-cool",        event = "VeryLazy" },
-	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "VeryLazy",
 		config = function()
