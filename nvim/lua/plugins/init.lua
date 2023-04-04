@@ -121,14 +121,6 @@ return {
 			{ "kkharji/sqlite.lua",                          lazy = true },
 		}
 	},
-
-	-- Git
-	{ "dinhhuy258/git.nvim",       event = "BufEnter" },
-	{ "lewis6991/gitsigns.nvim",   event = "BufEnter" },
-	{ "TimUntersberger/neogit",    event = "VeryLazy" },
-	{ "sindrets/diffview.nvim",    event = "VeryLazy" },
-	{ "akinsho/git-conflict.nvim", version = "*" },
-
 	-- Misc
 	{
 		"nvim-treesitter/nvim-treesitter",
