@@ -3,8 +3,8 @@ return {
 		"akinsho/toggleterm.nvim",
 		event = "VeryLazy",
 		keys = {
-			{ "<C-\\>", "<Cmd>ToggleTerm size=80 direction=vertical<CR>",   mode = { "n", "t" } },
-			{ "<A-\\>", "<Cmd>ToggleTerm size=20 direction=horizontal<CR>", mode = { "n", "t" } },
+			{ "<C-\\>", "<cmd>ToggleTerm size=80 direction=vertical<cr>",   mode = { "n", "t" } },
+			{ "<A-\\>", "<cmd>ToggleTerm size=20 direction=horizontal<cr>", mode = { "n", "t" } },
 		},
 		config = function()
 			require("toggleterm").setup()
@@ -13,10 +13,10 @@ return {
 				local opts = { buffer = 0 }
 				vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
 				vim.keymap.set("t", "jk", [[<C-\><C-n>]], opts)
-				vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
-				vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
-				vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
-				vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
+				vim.keymap.set("t", "<C-h>", [[<cmd>wincmd h<cr>]], opts)
+				vim.keymap.set("t", "<C-j>", [[<cmd>wincmd j<cr>]], opts)
+				vim.keymap.set("t", "<C-k>", [[<cmd>wincmd k<cr>]], opts)
+				vim.keymap.set("t", "<C-l>", [[<cmd>wincmd l<cr>]], opts)
 			end
 
 			-- if you only want these mappings for toggle term use term://*toggleterm#* instead

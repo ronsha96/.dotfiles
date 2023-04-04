@@ -37,40 +37,40 @@ vim.keymap.set("n", "<c-l>", "<c-w>l", opts)
 vim.keymap.set("n", "/\\", ":noh<cr>", opts)
 
 -- Move to previous/next
-vim.keymap.set("n", "<leader>t,", "<Cmd>BufferPrevious<CR>", opts)
-vim.keymap.set("n", "<leader>t.", "<Cmd>BufferNext<CR>", opts)
+vim.keymap.set("n", "<leader>t,", "<cmd>BufferPrevious<cr>", opts)
+vim.keymap.set("n", "<leader>t.", "<cmd>BufferNext<cr>", opts)
 
 -- Re-order to previous/next
-vim.keymap.set("n", "<leader>t<", "<Cmd>BufferMovePrevious<CR>", opts)
-vim.keymap.set("n", "<leader>t>", "<Cmd>BufferMoveNext<CR>", opts)
+vim.keymap.set("n", "<leader>t<", "<cmd>BufferMovePrevious<cr>", opts)
+vim.keymap.set("n", "<leader>t>", "<cmd>BufferMoveNext<cr>", opts)
 
 -- Goto buffer in position...
-vim.keymap.set("n", "<leader>t1", "<Cmd>BufferGoto 1<CR>", opts)
-vim.keymap.set("n", "<leader>t2", "<Cmd>BufferGoto 2<CR>", opts)
-vim.keymap.set("n", "<leader>t3", "<Cmd>BufferGoto 3<CR>", opts)
-vim.keymap.set("n", "<leader>t4", "<Cmd>BufferGoto 4<CR>", opts)
-vim.keymap.set("n", "<leader>t5", "<Cmd>BufferGoto 5<CR>", opts)
-vim.keymap.set("n", "<leader>t6", "<Cmd>BufferGoto 6<CR>", opts)
-vim.keymap.set("n", "<leader>t7", "<Cmd>BufferGoto 7<CR>", opts)
-vim.keymap.set("n", "<leader>t8", "<Cmd>BufferGoto 8<CR>", opts)
-vim.keymap.set("n", "<leader>t9", "<Cmd>BufferGoto 9<CR>", opts)
-vim.keymap.set("n", "<leader>t0", "<Cmd>BufferLast<CR>", opts)
+vim.keymap.set("n", "<leader>t1", "<cmd>BufferGoto 1<cr>", opts)
+vim.keymap.set("n", "<leader>t2", "<cmd>BufferGoto 2<cr>", opts)
+vim.keymap.set("n", "<leader>t3", "<cmd>BufferGoto 3<cr>", opts)
+vim.keymap.set("n", "<leader>t4", "<cmd>BufferGoto 4<cr>", opts)
+vim.keymap.set("n", "<leader>t5", "<cmd>BufferGoto 5<cr>", opts)
+vim.keymap.set("n", "<leader>t6", "<cmd>BufferGoto 6<cr>", opts)
+vim.keymap.set("n", "<leader>t7", "<cmd>BufferGoto 7<cr>", opts)
+vim.keymap.set("n", "<leader>t8", "<cmd>BufferGoto 8<cr>", opts)
+vim.keymap.set("n", "<leader>t9", "<cmd>BufferGoto 9<cr>", opts)
+vim.keymap.set("n", "<leader>t0", "<cmd>BufferLast<cr>", opts)
 
 -- Buffer closing & such
-vim.keymap.set("n", "<leader>tc", "<Cmd>BufferClose<CR>", opts)
-vim.keymap.set("n", "<leader>bx", "<Cmd>BufferClose<CR>", opts)
-vim.keymap.set("n", "<leader>bp", "<Cmd>BufferPin<CR>", opts)
-vim.keymap.set("n", "<leader>bc", "<Cmd>BufferCloseAllButPinned<CR>", opts)
-vim.keymap.set("n", "<leader>bv", "<Cmd>BufferCloseAllButVisible<CR>", opts)
+vim.keymap.set("n", "<leader>tc", "<cmd>BufferClose<cr>", opts)
+vim.keymap.set("n", "<leader>bx", "<cmd>BufferClose<cr>", opts)
+vim.keymap.set("n", "<leader>bp", "<cmd>BufferPin<cr>", opts)
+vim.keymap.set("n", "<leader>bc", "<cmd>BufferCloseAllButPinned<cr>", opts)
+vim.keymap.set("n", "<leader>bv", "<cmd>BufferCloseAllButVisible<cr>", opts)
 
 -- Magic buffer-picking mode
-vim.keymap.set("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
+vim.keymap.set("n", "<C-p>", "<cmd>BufferPick<cr>", opts)
 
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
 

@@ -158,12 +158,12 @@ local buttons = {
 		button(
 			"p",
 			"  Find project",
-			"<Cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>",
+			"<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>",
 			{}
 		),
-		button("r", "  Recent files", "<Cmd>lua require'telescope.builtin'.oldfiles{}<CR>", {}),
-		button("l", "󰏖  Open lazy", "<Cmd>Lazy<CR>", {}),
-		button("q", "ﰌ  Quit", "<Cmd>qa<CR>", {}),
+		button("r", "  Recent files", "<cmd>lua require'telescope.builtin'.oldfiles{}<cr>", {}),
+		button("l", "󰏖  Open lazy", "<cmd>Lazy<cr>", {}),
+		button("q", "ﰌ  Quit", "<cmd>qa<cr>", {}),
 	},
 	opts = {
 		spacing = 1,

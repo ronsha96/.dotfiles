@@ -1,7 +1,7 @@
 return {
 	{
 		"dinhhuy258/git.nvim",
-		event = "BufEnter",
+		event = "BufRead",
 		config = function()
 			require("git").setup({
 				keymaps = {
@@ -12,7 +12,7 @@ return {
 						-- Close blame window
 						quit_blame = "q",
 						-- Open blame commit
-						blame_commit = "<CR>",
+						blame_commit = "<cr>",
 						-- Open file/folder in git repository
 						browse = "<leader>go",
 						-- Open pull request of the current branch
@@ -36,7 +36,7 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "BufEnter",
+		event = "BufRead",
 		config = function()
 			local gitsigns = require("gitsigns")
 
@@ -51,7 +51,7 @@ return {
 	},
 	{
 		"akinsho/git-conflict.nvim",
-		event = "BufEnter",
+		event = "BufRead",
 		config = function()
 			require("git-conflict").setup()
 			vim.keymap.set("n", "<leader>gl", ":GitConflictListQf")
@@ -59,37 +59,26 @@ return {
 	},
 	{
 		"TimUntersberger/neogit",
-		event = "VeryLazy",
+		keys = {
+			{ "<leader>gs", "<cmd>Neogit kind=split<cr>" }
+		},
 		config = function()
-			local neogit = require("neogit")
-
-			neogit.setup({
+			require("neogit").setup({
 				kind = "tab",
 				integrations = { diffview = true },
 				disable_insert_on_commit = false,
 				disable_commit_confirmation = true,
 				disable_builtin_notifications = true,
 			})
-
-			local opts = { remap = false, silent = false }
-
-			vim.keymap.set("n", "<leader>gs", function()
-				neogit.open({ kind = "split" })
-			end, opts)
-
-			vim.keymap.set("n", "<leader>ge", ":Neogit cwd=", opts)
 		end,
 		dependencies = {
 			{
 				"sindrets/diffview.nvim",
-				event = "VeryLazy",
-				function()
-					local opts = { remap = false, silent = false }
-					vim.keymap.set("n", "<leader>gd", "<CMD>DiffviewOpen<CR>", opts)
-					vim.keymap.set("n", "<leader>gD", "<CMD>DiffviewClose<CR>", opts)
-				end
+				keys = {
+					{ "<leader>gd", "<cmd>DiffviewOpen<cr>" },
+					{ "<leader>gD", "<cmd>DiffviewClose<cr>" },
+				},
 			},
 		}
 	},
-
 }

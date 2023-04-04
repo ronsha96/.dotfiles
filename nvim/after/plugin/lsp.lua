@@ -145,7 +145,7 @@ cmp.setup({
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-,>"] = cmp.mapping.complete(),
-		["<CR>"] = cmp.mapping.confirm({
+		["<cr>"] = cmp.mapping.confirm({
 			select = true,
 			-- behavior = cmp.ConfirmBehavior.Replace,
 		}),
