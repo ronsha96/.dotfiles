@@ -121,13 +121,4 @@ return {
 			{ "kkharji/sqlite.lua",                          lazy = true },
 		}
 	},
-	-- Misc
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-context"
-		}
-	},
-	"goolord/alpha-nvim",
 }
