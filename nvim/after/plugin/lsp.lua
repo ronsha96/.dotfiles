@@ -112,6 +112,16 @@ vim.diagnostic.config({
 	underline = false,
 })
 
+
+
+local null_ls = require("null-ls")
+
+null_ls.setup({
+	sources = {
+		-- Put linters & formatters here...
+	}
+})
+
 -- Completion
 
 local luasnip = require("luasnip")
