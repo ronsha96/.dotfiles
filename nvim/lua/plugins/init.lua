@@ -179,8 +179,6 @@ return {
 			require("leap").set_default_keymaps()
 		end,
 	},
-	{ "ThePrimeagen/harpoon",    event = "VeryLazy" },
-	{ "mg979/vim-visual-multi",  event = "VeryLazy" },
 	{ "andymass/vim-matchup",    event = "VeryLazy" },
 	{ "akinsho/toggleterm.nvim", event = "VeryLazy" },
 	{ "romainl/vim-cool",        event = "VeryLazy" },
