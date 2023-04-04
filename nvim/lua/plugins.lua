@@ -154,7 +154,15 @@ require("lazy").setup({
 			})
 		end
 	},
-	{ "romgrk/barbar.nvim",         event = "VeryLazy" },
+	{
+		"romgrk/barbar.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("barbar").setup({
+				animation = false,
+			})
+		end
+	},
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
