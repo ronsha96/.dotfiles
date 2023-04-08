@@ -52,7 +52,7 @@ return {
 							-- Anything that is not supported by mason
 							null_ls.builtins.formatting.rome,
 							null_ls.builtins.formatting.prettierd.with({
-								file_types = {
+								filetypes = {
 									-- NOTE: Remove js/ts/json formatting because rome handles those
 									-- "javascript",
 									-- "javascriptreact",
