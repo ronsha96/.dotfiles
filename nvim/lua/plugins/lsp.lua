@@ -51,6 +51,27 @@ return {
 						sources = {
 							-- Anything that is not supported by mason
 							null_ls.builtins.formatting.rome,
+							null_ls.builtins.formatting.prettierd.with({
+								file_types = {
+									-- NOTE: Remove js/ts/json formatting because rome handles those
+									-- "javascript",
+									-- "javascriptreact",
+									-- "typescript",
+									-- "typescriptreact",
+									-- "json",
+									-- "jsonc",
+									-- "yaml",
+									"vue",
+									"css",
+									"scss",
+									"less",
+									"html",
+									"markdown",
+									"markdown.mdx",
+									"graphql",
+									"handlebars",
+								},
+							}),
 						},
 					})
 
@@ -104,6 +125,7 @@ return {
 
 			lsp.ensure_installed({
 				"tsserver",
+				"rome",
 				"rust_analyzer",
 			})
 
@@ -137,6 +159,11 @@ return {
 			lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
 			lspconfig.tsserver.setup({
+				on_init = function(client)
+					-- Disable formatting for tsserver, since we use Rome for this
+					client.server_capabilities.document_formatting = false
+					client.server_capabilities.document_range_formatting = false
+				end,
 				init_options = {
 					preferences = {
 						importModuleSpecifierPreference = "relative",
