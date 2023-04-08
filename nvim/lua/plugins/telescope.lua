@@ -149,6 +149,10 @@ return {
 			vim.keymap.set("n", ";e", function()
 				builtin.diagnostics({})
 			end)
+
+			vim.keymap.set("n", ";o", function()
+				builtin.oldfiles({})
+			end)
 		end,
 	},
 }
