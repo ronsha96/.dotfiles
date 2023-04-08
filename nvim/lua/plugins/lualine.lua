@@ -3,7 +3,7 @@ return {
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
 		dependencies = {
-			"arkav/lualine-lsp-progress"
+			"arkav/lualine-lsp-progress",
 		},
 		config = function()
 			require("lualine").setup({
@@ -59,6 +59,6 @@ return {
 				tabline = {},
 				extensions = { "fugitive" },
 			})
-		end
+		end,
 	},
 }

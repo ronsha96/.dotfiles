@@ -25,13 +25,17 @@ return {
 				enable_git_status = true,
 				enable_diagnostics = true,
 				open_files_do_not_replace_types = {
-					"terminal", "trouble", "qf",
-					"toggleterm", "NeogitStatus", "NeogitPopup"
+					"terminal",
+					"trouble",
+					"qf",
+					"toggleterm",
+					"NeogitStatus",
+					"NeogitPopup",
 				},
 				filesystem = {
 					follow_current_file = false,
-				}
+				},
 			})
-		end
+		end,
 	},
 }

@@ -3,7 +3,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter-context"
+			"nvim-treesitter/nvim-treesitter-context",
 		},
 		config = function()
 			local utils = require("utils")
@@ -50,6 +50,6 @@ return {
 				install.prefer_git = false
 				install.compilers = { "clang" }
 			end
-		end
-	}
+		end,
+	},
 }

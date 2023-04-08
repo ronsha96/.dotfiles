@@ -149,6 +149,6 @@ return {
 			vim.keymap.set("n", ";e", function()
 				builtin.diagnostics({})
 			end)
-		end
+		end,
 	},
 }

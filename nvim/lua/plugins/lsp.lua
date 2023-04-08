@@ -10,22 +10,53 @@ return {
 		dependencies = {
 			-- Lsp
 			"neovim/nvim-lspconfig",
-			{
-				"williamboman/mason.nvim",
-				build = function()
-					vim.cmd [[MasonUpdate]]
-				end,
-			},
 			"williamboman/mason-lspconfig.nvim",
 			{
 				"j-hui/fidget.nvim",
 				event = "BufRead",
 				config = function()
 					require("fidget").setup({})
-				end
+				end,
 			},
 			"simrat39/rust-tools.nvim",
 			"jose-elias-alvarez/null-ls.nvim",
+			{
+				"jay-babu/mason-null-ls.nvim",
+				event = { "BufReadPre", "BufNewFile" },
+				dependencies = {
+					{
+						"williamboman/mason.nvim",
+						build = function()
+							vim.cmd([[MasonUpdate]])
+						end,
+					},
+					"jose-elias-alvarez/null-ls.nvim",
+				},
+				config = function()
+					require("mason").setup()
+
+					local mason_null_ls = require("mason-null-ls")
+
+					mason_null_ls.setup({
+						ensure_installed = {
+							"rome",
+							"stylua",
+						},
+						automatic_installation = false,
+						automatic_setup = true,
+					})
+
+					local null_ls = require("null-ls")
+					null_ls.setup({
+						sources = {
+							-- Anything that is not supported by mason
+							null_ls.builtins.formatting.rome,
+						},
+					})
+
+					mason_null_ls.setup_handlers()
+				end,
+			},
 
 			-- Completion
 			{
@@ -37,10 +68,12 @@ return {
 						event = "InsertCharPre",
 						version = "v1.*",
 						build = "make install_jsregexp",
-						dependencies = { {
-							"rafamadriz/friendly-snippets",
-							event = "InsertCharPre",
-						} },
+						dependencies = {
+							{
+								"rafamadriz/friendly-snippets",
+								event = "InsertCharPre",
+							},
+						},
 					},
 					"saadparwaiz1/cmp_luasnip",
 					"hrsh7th/cmp-buffer",
@@ -60,7 +93,7 @@ return {
 							})
 						end,
 					},
-				}
+				},
 			},
 		},
 		config = function()
@@ -157,16 +190,16 @@ return {
 						procMacro = {
 							enable = true,
 						},
-					}
-				}
+					},
+				},
 			})
 
 			local dart_lsp = lsp.build_options("dartls", {})
 
 			require("flutter-tools").setup({
 				lsp = {
-					capabilities = dart_lsp.capabilities
-				}
+					capabilities = dart_lsp.capabilities,
+				},
 			})
 
 			lsp.setup()
@@ -176,13 +209,6 @@ return {
 				signs = true,
 				update_in_insert = false,
 				underline = false,
-			})
-
-			local null_ls = require("null-ls")
-
-			null_ls.setup({
-				sources = {
-				}
 			})
 
 			-- Completion
@@ -195,10 +221,7 @@ return {
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local cmp = require("cmp")
 
-			cmp.event:on(
-				"confirm_done",
-				cmp_autopairs.on_confirm_done()
-			)
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 			cmp.setup({
 				snippet = {
@@ -230,7 +253,7 @@ return {
 					format = require("lspkind").cmp_format({
 						mode = "symbol_text",
 						preset = "default",
-					})
+					}),
 				},
 			})
 
@@ -262,6 +285,6 @@ return {
 			})
 
 			vim.cmd([[highlight! default link CmpItemKind CmpItemMenuDefault]])
-		end
+		end,
 	},
 }

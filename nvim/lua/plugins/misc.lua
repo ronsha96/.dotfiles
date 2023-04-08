@@ -13,7 +13,7 @@ return {
 		event = "BufReadPost",
 		config = function()
 			require("Comment").setup()
-		end
+		end,
 	},
 	{
 		"folke/todo-comments.nvim",
@@ -27,28 +27,28 @@ return {
 		lazy = true,
 		config = function()
 			require("nvim-web-devicons").setup()
-		end
+		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "VeryLazy",
 		config = function()
 			require("indent_blankline").setup({})
-		end
+		end,
 	},
 	{
 		"windwp/nvim-ts-autotag",
 		event = "InsertEnter",
 		config = function()
 			require("nvim-ts-autotag").setup()
-		end
+		end,
 	},
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = function()
 			require("nvim-autopairs").setup()
-		end
+		end,
 	},
 	{ "brooth/far.vim", event = "VeryLazy" },
 }

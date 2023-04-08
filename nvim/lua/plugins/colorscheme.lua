@@ -7,7 +7,7 @@ return {
 		config = function()
 			require("gruvbox").setup({ contrast = "dark", italics = false })
 			vim.cmd([[colorscheme gruvbox]])
-		end
+		end,
 	},
 	{
 		"Shatur/neovim-ayu",
@@ -29,7 +29,7 @@ return {
 			})
 
 			ayu.colorscheme()
-		end
+		end,
 	},
 	{
 		"EdenEast/nightfox.nvim",
@@ -39,7 +39,7 @@ return {
 		config = function()
 			require("nightfox").setup()
 			vim.cmd([[colorscheme nordfox]])
-		end
+		end,
 	},
 	{
 		"folke/tokyonight.nvim",
@@ -55,7 +55,7 @@ return {
 				},
 			})
 			vim.cmd([[colorscheme tokyonight]])
-		end
+		end,
 	},
 	{
 		"rebelot/kanagawa.nvim",
@@ -84,11 +84,11 @@ return {
 							ui = {
 								bg_gutter = "none",
 								float = {
-									bg = "none"
-								}
-							}
-						}
-					}
+									bg = "none",
+								},
+							},
+						},
+					},
 				},
 				overrides = function(colors)
 					local theme = colors.theme
@@ -111,10 +111,10 @@ return {
 				background = {
 					dark = "wave",
 					light = "lotus",
-				}
+				},
 			})
 
 			vim.cmd([[colorscheme kanagawa]])
-		end
+		end,
 	},
 }

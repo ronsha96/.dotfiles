@@ -16,6 +16,6 @@ return {
 				"<cmd>call vm#commands#add_cursor_down(0, v:count1)<cr>",
 				{ remap = false, silent = true }
 			)
-		end
+		end,
 	},
 }

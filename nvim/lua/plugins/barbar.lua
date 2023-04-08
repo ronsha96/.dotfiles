@@ -6,6 +6,6 @@ return {
 			require("barbar").setup({
 				animation = false,
 			})
-		end
-	}
+		end,
+	},
 }

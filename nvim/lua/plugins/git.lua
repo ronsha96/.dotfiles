@@ -32,7 +32,7 @@ return {
 					target_branch = "master",
 				},
 			})
-		end
+		end,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -47,7 +47,7 @@ return {
 			vim.keymap.set("n", "<leader>gB", function()
 				gitsigns.blame_line({ full = true })
 			end, { remap = false, silent = false })
-		end
+		end,
 	},
 	{
 		"akinsho/git-conflict.nvim",
@@ -55,12 +55,12 @@ return {
 		config = function()
 			require("git-conflict").setup()
 			vim.keymap.set("n", "<leader>gl", ":GitConflictListQf")
-		end
+		end,
 	},
 	{
 		"TimUntersberger/neogit",
 		keys = {
-			{ "<leader>gs", "<cmd>Neogit kind=split<cr>" }
+			{ "<leader>gs", "<cmd>Neogit kind=split<cr>" },
 		},
 		config = function()
 			require("neogit").setup({
@@ -79,6 +79,6 @@ return {
 					{ "<leader>gD", "<cmd>DiffviewClose<cr>" },
 				},
 			},
-		}
+		},
 	},
 }

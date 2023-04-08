@@ -209,6 +209,6 @@ return {
 			}
 
 			require("alpha").setup(config)
-		end
-	}
+		end,
+	},
 }

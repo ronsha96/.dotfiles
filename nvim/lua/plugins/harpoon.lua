@@ -17,6 +17,6 @@ return {
 					ui.nav_file(n)
 				end, opts)
 			end
-		end
+		end,
 	},
 }
