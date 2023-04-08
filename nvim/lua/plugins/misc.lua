@@ -1,4 +1,11 @@
 return {
+	{
+		"norcalli/nvim-colorizer.lua",
+		event = "VeryLazy",
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
 	{ "andymass/vim-matchup", event = "VeryLazy" },
 	{ "romainl/vim-cool",     event = "VeryLazy" },
 	{
