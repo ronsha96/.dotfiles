@@ -35,6 +35,11 @@ return {
 				filesystem = {
 					follow_current_file = false,
 				},
+				default_component_configs = {
+					indent = {
+						with_expanders = true,
+					},
+				},
 			})
 		end,
 	},
