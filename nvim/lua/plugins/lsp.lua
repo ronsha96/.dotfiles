@@ -43,7 +43,7 @@ return {
 							"stylua",
 						},
 						automatic_installation = false,
-						automatic_setup = true,
+						handlers = {}
 					})
 
 					local null_ls = require("null-ls")
@@ -74,8 +74,6 @@ return {
 							}),
 						},
 					})
-
-					mason_null_ls.setup_handlers()
 				end,
 			},
 
