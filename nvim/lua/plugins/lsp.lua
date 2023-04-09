@@ -43,7 +43,7 @@ return {
 							"stylua",
 						},
 						automatic_installation = false,
-						handlers = {}
+						handlers = {},
 					})
 
 					local null_ls = require("null-ls")
@@ -151,7 +151,9 @@ return {
 				vim.keymap.set("n", "<leader>ws", function()
 					require("telescope.builtin").lsp_workspace_symbols({})
 				end, opts)
-				lsp.buffer_autoformat()
+
+				-- Enable this if I want format on save
+				-- lsp.buffer_autoformat()
 			end)
 
 			lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
