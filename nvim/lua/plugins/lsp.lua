@@ -26,7 +26,7 @@ return {
 				end,
 				config = function()
 					require("mason").setup()
-				end
+				end,
 			},
 			{
 				"jose-elias-alvarez/null-ls.nvim",
@@ -35,7 +35,7 @@ return {
 					local null_ls = require("null-ls")
 					null_ls.setup({
 						sources = {
-							-- Anything that is not supported by mason
+							null_ls.builtins.formatting.stylua,
 							null_ls.builtins.formatting.rome,
 							null_ls.builtins.formatting.prettierd.with({
 								filetypes = {
@@ -182,13 +182,13 @@ return {
 						validate = true,
 						lint = {
 							unknownAtRules = "ignore",
-						}
+						},
 					},
 					less = {
 						validate = true,
 						lint = {
 							unknownAtRules = "ignore",
-						}
+						},
 					},
 				},
 			})
@@ -253,8 +253,8 @@ return {
 
 			require("luasnip.loaders.from_vscode").lazy_load({
 				paths = {
-					"../../snippets/solid-snippets/snippets"
-				}
+					"../../snippets/solid-snippets/snippets",
+				},
 			})
 
 			luasnip.filetype_extend("all", { "_" })
@@ -278,12 +278,12 @@ return {
 					}),
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
+					{ name = "nvim_lsp", trigger_characters = { "-" } },
 					{ name = "path" },
 					{ name = "git" },
 					{ name = "cmp_git" },
-					{ name = "buffer",  keyword_length = 3 },
-					{ name = "luasnip", keyword_length = 2 },
+					{ name = "buffer",   keyword_length = 3 },
+					{ name = "luasnip",  keyword_length = 2 },
 				}),
 				window = {
 					completion = cmp.config.window.bordered(),
