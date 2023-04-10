@@ -19,33 +19,19 @@ return {
 				end,
 			},
 			"simrat39/rust-tools.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
 			{
-				"jay-babu/mason-null-ls.nvim",
-				event = { "BufReadPre", "BufNewFile" },
-				dependencies = {
-					{
-						"williamboman/mason.nvim",
-						build = function()
-							vim.cmd([[MasonUpdate]])
-						end,
-					},
-					"jose-elias-alvarez/null-ls.nvim",
-				},
+				"williamboman/mason.nvim",
+				build = function()
+					vim.cmd([[MasonUpdate]])
+				end,
 				config = function()
 					require("mason").setup()
-
-					local mason_null_ls = require("mason-null-ls")
-
-					mason_null_ls.setup({
-						ensure_installed = {
-							"rome",
-							"stylua",
-						},
-						automatic_installation = false,
-						handlers = {},
-					})
-
+				end
+			},
+			{
+				"jose-elias-alvarez/null-ls.nvim",
+				event = { "BufReadPre", "BufNewFile" },
+				config = function()
 					local null_ls = require("null-ls")
 					null_ls.setup({
 						sources = {
