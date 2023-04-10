@@ -123,6 +123,7 @@ return {
 
 			lsp.ensure_installed({
 				"tsserver",
+				"css-lsp",
 				"rome",
 				"rust_analyzer",
 			})
@@ -180,6 +181,16 @@ return {
 							vim.lsp.buf.execute_command(params)
 						end,
 						description = "Organize Imports",
+					},
+				},
+			})
+
+			lspconfig.cssls.setup({
+				settings = {
+					css = {
+						lint = {
+							unknownAtRules = "ignore",
+						},
 					},
 				},
 			})
