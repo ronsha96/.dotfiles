@@ -123,7 +123,7 @@ return {
 
 			lsp.ensure_installed({
 				"tsserver",
-				"css-lsp",
+				"cssls",
 				"rome",
 				"rust_analyzer",
 			})
