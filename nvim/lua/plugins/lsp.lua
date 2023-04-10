@@ -193,6 +193,15 @@ return {
 				},
 			})
 
+			lspconfig.unocss.setup({
+				root_dir = require("lspconfig.util").root_pattern(
+					"unocss.config.js",
+					"unocss.config.ts",
+					"uno.config.js",
+					"uno.config.ts"
+				),
+			})
+
 			local rust_tools = require("rust-tools")
 
 			rust_tools.setup({
