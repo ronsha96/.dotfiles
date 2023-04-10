@@ -110,6 +110,7 @@ return {
 			lsp.ensure_installed({
 				"tsserver",
 				"cssls",
+				"unocss",
 				"rome",
 				"rust_analyzer",
 			})
