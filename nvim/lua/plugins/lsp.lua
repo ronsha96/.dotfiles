@@ -284,14 +284,14 @@ return {
 					["<C-,>"] = cmp.mapping.complete(),
 					["<cr>"] = cmp.mapping.confirm({
 						select = true,
-						-- behavior = cmp.ConfirmBehavior.Replace,
+						behavior = cmp.ConfirmBehavior.Replace,
 					}),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp", trigger_characters = { "-" } },
 					{ name = "path" },
 					{ name = "git" },
-					{ name = "cmp_git" },
+					{ name = "cmdline" },
 					{ name = "buffer",   keyword_length = 3 },
 					{ name = "luasnip",  keyword_length = 2 },
 				}),
