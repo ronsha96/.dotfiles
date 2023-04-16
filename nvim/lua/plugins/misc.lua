@@ -1,5 +1,12 @@
 return {
 	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("which-key").setup()
+		end,
+	},
+	{
 		"norcalli/nvim-colorizer.lua",
 		event = "VeryLazy",
 		config = function()
