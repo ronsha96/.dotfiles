@@ -143,7 +143,7 @@ return {
 				},
 				b = {
 					function()
-						telescope.builtin.current_buffer_fuzzy_find({ skip_empty_lines = false })
+						builtin.current_buffer_fuzzy_find({ skip_empty_lines = false })
 					end,
 					"Current buffer fuzzy find",
 				},
