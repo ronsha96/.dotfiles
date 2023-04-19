@@ -109,9 +109,15 @@ return {
 				[[               ⠀⠀⠈⠉⠑⠁⠹⠪⠷⠶⡫⠯⡳⡳⠥⠂⠀⠃⠉⠁⠀⠀                   ]],
 			}
 
+			local all_headers = { header_comic_blush, header_pikachu, header_pixel_girl }
+
 			local header = {
 				type = "text",
-				val = header_comic_blush,
+				val = function()
+					math.randomseed(os.time())
+					local header = all_headers[math.random(#all_headers)]
+					return header
+				end,
 				opts = {
 					position = "center",
 					hl = "@type",
@@ -136,8 +142,7 @@ return {
 					cursor = 6,
 					width = 40,
 					align_shortcut = "right",
-					-- hl = "@parameter",
-					hl_shortcut = "@parameter",
+					hl_shortcut = "@type",
 				}
 
 				if keybind then
@@ -178,14 +183,6 @@ return {
 			local tools_group = {
 				type = "group",
 				val = {
-					-- {
-					-- 	type = "text",
-					-- 	val = "Tools",
-					-- 	opts = {
-					-- 		position = "center",
-					-- 		hl = "@punctuation",
-					-- 	},
-					-- },
 					button("L", "󰚥  Lazy", "<cmd>Lazy<cr>", {}),
 					button("M", "󱊈  Mason", "<cmd>Mason<cr>", {}),
 				},
@@ -224,8 +221,6 @@ return {
 					main_group,
 					{ type = "padding", val = 1 },
 					tools_group,
-					-- { type = "padding", val = 2 },
-					-- quit_button,
 					{ type = "padding", val = 4 },
 					footer,
 				},
