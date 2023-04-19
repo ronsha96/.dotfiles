@@ -114,7 +114,7 @@ return {
 				val = header_comic_blush,
 				opts = {
 					position = "center",
-					hl = "@conditional",
+					hl = "@keyword",
 				},
 			}
 
@@ -123,7 +123,7 @@ return {
 				val = "~ fuck shit up ~",
 				opts = {
 					position = "center",
-					hl = "@conditional",
+					hl = "@keyword",
 				},
 			}
 
