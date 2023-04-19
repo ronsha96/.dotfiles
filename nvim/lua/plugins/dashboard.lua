@@ -109,15 +109,12 @@ return {
 				[[               ⠀⠀⠈⠉⠑⠁⠹⠪⠷⠶⡫⠯⡳⡳⠥⠂⠀⠃⠉⠁⠀⠀                   ]],
 			}
 
-			local header_hl = "Type"
-			local hl = "@punctuation"
-
 			local header = {
 				type = "text",
 				val = header_comic_blush,
 				opts = {
 					position = "center",
-					hl = header_hl,
+					hl = "@parameter",
 				},
 			}
 
@@ -126,7 +123,7 @@ return {
 				val = "~ fuck shit up ~",
 				opts = {
 					position = "center",
-					hl = header_hl,
+					hl = "@parameter",
 				},
 			}
 
@@ -139,7 +136,7 @@ return {
 					cursor = 6,
 					width = 30,
 					align_shortcut = "right",
-					hl_shortcut = hl,
+					hl_shortcut = "@parameter",
 				}
 
 				if keybind then
@@ -185,7 +182,7 @@ return {
 						val = "Tools",
 						opts = {
 							position = "center",
-							hl = hl,
+							hl = "@punctuation",
 						},
 					},
 					button("l", "󰚥  Lazy", "<cmd>Lazy<cr>", {}),
@@ -212,7 +209,7 @@ return {
 				end,
 				opts = {
 					position = "center",
-					hl = "DiagnosticWarn",
+					hl = "@comment",
 				},
 			}
 
