@@ -114,7 +114,7 @@ return {
 				val = header_comic_blush,
 				opts = {
 					position = "center",
-					hl = "@keyword",
+					hl = "@type",
 				},
 			}
 
@@ -123,7 +123,7 @@ return {
 				val = "~ fuck shit up ~",
 				opts = {
 					position = "center",
-					hl = "@keyword",
+					hl = "@type",
 				},
 			}
 
@@ -136,8 +136,8 @@ return {
 					cursor = 6,
 					width = 40,
 					align_shortcut = "right",
-					hl = "@parameter",
-					hl_shortcut = "@function",
+					-- hl = "@parameter",
+					hl_shortcut = "@parameter",
 				}
 
 				if keybind then
