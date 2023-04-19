@@ -207,7 +207,7 @@ return {
 				end,
 				opts = {
 					position = "center",
-					hl = "@boolean",
+					hl = "DiagnosticWarn",
 				},
 			}
 
