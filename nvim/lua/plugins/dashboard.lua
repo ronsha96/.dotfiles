@@ -109,12 +109,15 @@ return {
 				[[               ⠀⠀⠈⠉⠑⠁⠹⠪⠷⠶⡫⠯⡳⡳⠥⠂⠀⠃⠉⠁⠀⠀                   ]],
 			}
 
+			local header_hl = "Type"
+			local hl = "@punctuation"
+
 			local header = {
 				type = "text",
 				val = header_comic_blush,
 				opts = {
 					position = "center",
-					hl = "Type",
+					hl = header_hl,
 				},
 			}
 
@@ -123,7 +126,7 @@ return {
 				val = "~ fuck shit up ~",
 				opts = {
 					position = "center",
-					hl = "Type",
+					hl = header_hl,
 				},
 			}
 
@@ -133,11 +136,12 @@ return {
 				local opts = {
 					position = "center",
 					shortcut = sc,
-					cursor = 5,
-					width = 50,
+					cursor = 6,
+					width = 30,
 					align_shortcut = "right",
-					hl_shortcut = "Type",
+					hl_shortcut = hl,
 				}
+
 				if keybind then
 					keybind_opts = if_nil(keybind_opts, { remap = false, silent = true, nowait = true })
 					opts.keymap = { "n", sc_, keybind, keybind_opts }
@@ -156,25 +160,43 @@ return {
 				}
 			end
 
-			local buttons = {
+			local main_group = {
 				type = "group",
 				val = {
-					button("e", "  New file", "<cmd>ene<cr>"),
+					button("e", "󰈔  New", "<cmd>ene <bar> startinsert <cr>", {}),
 					button(
 						"p",
-						"  Find project",
+						"󰂺  Projects",
 						"<cmd>lua require'telescope'.extensions.project.project{ display_type = 'full' }<cr>",
 						{}
 					),
-					button("r", "  Recent files", "<cmd>lua require'telescope.builtin'.oldfiles{}<cr>"),
-					button("l", "󰏖  Lazy", "<cmd>Lazy<cr>"),
-					button("l", "󱊍  Mason", "<cmd>Mason<cr>"),
-					button("q", "ﰌ  Quit", "<cmd>qa<cr>"),
+					button("r", "󰋚  Recents", "<cmd>lua require'telescope.builtin'.oldfiles{}<cr>", {}),
 				},
 				opts = {
 					spacing = 1,
 				},
 			}
+
+			local tools_group = {
+				type = "group",
+				val = {
+					{
+						type = "text",
+						val = "Tools",
+						opts = {
+							position = "center",
+							hl = hl,
+						},
+					},
+					button("l", "󰚥  Lazy", "<cmd>Lazy<cr>", {}),
+					button("m", "󱊈  Mason", "<cmd>Mason<cr>", {}),
+				},
+				opts = {
+					spacing = 1,
+				},
+			}
+
+			local quit_button = button("q", "ﰌ  Quit", "<cmd>qa<cr>", {})
 
 			local footer = {
 				type = "text",
@@ -198,10 +220,14 @@ return {
 				layout = {
 					{ type = "padding", val = 8 },
 					header,
-					{ type = "padding", val = 1 },
+					{ type = "padding", val = 6 },
 					subtext,
-					{ type = "padding", val = 4 },
-					buttons,
+					{ type = "padding", val = 1 },
+					main_group,
+					-- { type = "padding", val = 1 },
+					-- tools_group,
+					-- { type = "padding", val = 2 },
+					-- quit_button,
 					{ type = "padding", val = 4 },
 					footer,
 				},
