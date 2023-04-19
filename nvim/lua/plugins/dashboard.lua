@@ -109,15 +109,17 @@ return {
 				[[               ⠀⠀⠈⠉⠑⠁⠹⠪⠷⠶⡫⠯⡳⡳⠥⠂⠀⠃⠉⠁⠀⠀                   ]],
 			}
 
-			local all_headers = { header_comic_blush, header_pikachu, header_pixel_girl }
+			local headers = { header_comic_blush, header_pikachu, header_pixel_girl }
+
+			local function get_header()
+				math.randomseed(os.time())
+				local header = headers[math.random(#headers)]
+				return header
+			end
 
 			local header = {
 				type = "text",
-				val = function()
-					math.randomseed(os.time())
-					local header = all_headers[math.random(#all_headers)]
-					return header
-				end,
+				val = get_header(),
 				opts = {
 					position = "center",
 					hl = "@type",
