@@ -4,23 +4,16 @@ return {
 		"nvim-telescope/telescope.nvim",
 		version = "0.1.0",
 		dependencies = {
-			{ "nvim-telescope/telescope-file-browser.nvim",  lazy = true },
-			{ "nvim-telescope/telescope-smart-history.nvim", lazy = true },
-			{ "nvim-telescope/telescope-fzy-native.nvim",    lazy = true },
-			{ "nvim-telescope/telescope-ui-select.nvim",     lazy = true },
-			{ "nvim-telescope/telescope-project.nvim",       lazy = true },
-			{ "kkharji/sqlite.lua",                          lazy = true },
+			{ "nvim-telescope/telescope-live-grep-args.nvim", lazy = true },
+			{ "nvim-telescope/telescope-fzy-native.nvim",     lazy = true },
+			{ "nvim-telescope/telescope-ui-select.nvim",      lazy = true },
+			{ "nvim-telescope/telescope-project.nvim",        lazy = true },
 		},
 		config = function()
 			local utils = require("utils")
 			local telescope = require("telescope")
 			local actions = require("telescope.actions")
 			local builtin = require("telescope.builtin")
-
-			local history_file_name = "telescope_history.sqlite3"
-			local history_path = utils.is_windows()
-				and os.getenv("localappdata") .. "\\share\\nvim\\databases\\" .. history_file_name
-				or "~/.local/share/nvim/databases/" .. history_file_name
 
 			telescope.setup({
 				defaults = {
@@ -30,27 +23,6 @@ return {
 							["q"] = actions.close,
 						},
 					},
-					history = {
-						path = history_path,
-						limit = 100,
-					},
-					-- preview = {
-					-- 	filesize_hook = function(filepath, bufnr, opts)
-					-- 		local max_bytes = 10000
-					-- 		local cmd = { "head", "-c", max_bytes, filepath }
-					-- 		require("telescope.previewers.utils").job_maker(cmd, bufnr, opts)
-					-- 	end,
-					-- },
-					-- vimgrep_arguments = {
-					-- 	"rg",
-					-- 	"-L",
-					-- 	"--color=never",
-					-- 	"--no-heading",
-					-- 	"--with-filename",
-					-- 	"--line-number",
-					-- 	"--column",
-					-- 	"--smart-case",
-					-- },
 					prompt_prefix = "   ",
 					selection_caret = "󰅂 ",
 					entry_prefix = "  ",
@@ -86,7 +58,7 @@ return {
 
 			-- Extensions
 			telescope.load_extension("fzy_native")
-			telescope.load_extension("smart_history")
+			-- telescope.load_extension("smart_history")
 			telescope.load_extension("ui-select")
 			telescope.load_extension("project")
 
@@ -194,7 +166,12 @@ return {
 							default_text = selected_text,
 						})
 					end,
-					"Grep",
+					"Live grep",
+				},
+				R = {
+					function()
+					end,
+					"Live grep w/ args",
 				},
 			}, {
 				mode = { "n", "v" },
