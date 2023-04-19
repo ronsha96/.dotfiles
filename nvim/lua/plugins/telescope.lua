@@ -9,7 +9,6 @@ return {
 			{ "nvim-telescope/telescope-project.nvim",        lazy = true },
 		},
 		config = function()
-			local utils = require("utils")
 			local telescope = require("telescope")
 			local actions = require("telescope.actions")
 			local builtin = require("telescope.builtin")
@@ -68,7 +67,7 @@ return {
 			wk.register({
 				f = {
 					function()
-						local _, ret, _ = utils.get_os_command_output({
+						local _, ret, _ = require("telescope.utils").get_os_command_output({
 							"git",
 							"rev-parse",
 							"--is-inside-work-tree",
