@@ -2,7 +2,6 @@ return {
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	{
 		"nvim-telescope/telescope.nvim",
-		version = "0.1.0",
 		dependencies = {
 			{ "nvim-telescope/telescope-live-grep-args.nvim", lazy = true },
 			{ "nvim-telescope/telescope-fzy-native.nvim",     lazy = true },
