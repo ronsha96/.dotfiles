@@ -68,7 +68,7 @@ return {
 			wk.register({
 				f = {
 					function()
-						local _, ret, _ = require("telescope.utils").get_os_command_output({
+						local _, ret, _ = utils.get_os_command_output({
 							"git",
 							"rev-parse",
 							"--is-inside-work-tree",
@@ -135,6 +135,18 @@ return {
 					end,
 					"Recent files",
 				},
+				R = {
+					function()
+						telescope.extensions.live_grep_args.live_grep_args()
+					end,
+					"Live Grep w/ args",
+				},
+				b = {
+					function()
+						telescope.builtin.current_buffer_fuzzy_find({ skip_empty_lines = false })
+					end,
+					"Current buffer fuzzy find",
+				},
 			}, {
 				mode = "n",
 				prefix = ";",
@@ -166,12 +178,6 @@ return {
 						})
 					end,
 					"Live Grep",
-				},
-				R = {
-					function()
-						telescope.extensions.live_grep_args.live_grep_args()
-					end,
-					"Live Grep w/ args",
 				},
 			}, {
 				mode = { "n", "v" },
