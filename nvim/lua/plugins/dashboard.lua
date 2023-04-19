@@ -111,15 +111,12 @@ return {
 
 			local headers = { header_comic_blush, header_pikachu, header_pixel_girl }
 
-			local function get_header()
-				math.randomseed(os.time())
-				local header = headers[math.random(#headers)]
-				return header
-			end
+			math.randomseed(os.time())
+			local chosen_header = headers[math.random(#headers)]
 
 			local header = {
 				type = "text",
-				val = get_header(),
+				val = chosen_header,
 				opts = {
 					position = "center",
 					hl = "@type",
@@ -193,8 +190,6 @@ return {
 				},
 			}
 
-			local quit_button = button("q", "ﰌ  Quit", "<cmd>qa<cr>", {})
-
 			local footer = {
 				type = "text",
 				val = function()
@@ -215,11 +210,11 @@ return {
 
 			local config = {
 				layout = {
-					{ type = "padding", val = 8 },
+					{ type = "padding", val = math.max(7, math.floor(#chosen_header * 0.6)) },
 					header,
 					{ type = "padding", val = 1 },
 					subtext,
-					{ type = "padding", val = 4 },
+					{ type = "padding", val = math.floor(#chosen_header * 0.4) },
 					main_group,
 					{ type = "padding", val = 1 },
 					tools_group,
