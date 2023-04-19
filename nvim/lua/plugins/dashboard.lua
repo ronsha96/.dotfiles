@@ -114,7 +114,7 @@ return {
 				val = header_comic_blush,
 				opts = {
 					position = "center",
-					hl = "@parameter",
+					hl = "@conditional",
 				},
 			}
 
@@ -123,7 +123,7 @@ return {
 				val = "~ fuck shit up ~",
 				opts = {
 					position = "center",
-					hl = "@parameter",
+					hl = "@conditional",
 				},
 			}
 
@@ -134,9 +134,10 @@ return {
 					position = "center",
 					shortcut = sc,
 					cursor = 6,
-					width = 30,
+					width = 40,
 					align_shortcut = "right",
-					hl_shortcut = "@parameter",
+					hl = "@parameter",
+					hl_shortcut = "@function",
 				}
 
 				if keybind then
@@ -177,16 +178,16 @@ return {
 			local tools_group = {
 				type = "group",
 				val = {
-					{
-						type = "text",
-						val = "Tools",
-						opts = {
-							position = "center",
-							hl = "@punctuation",
-						},
-					},
-					button("l", "󰚥  Lazy", "<cmd>Lazy<cr>", {}),
-					button("m", "󱊈  Mason", "<cmd>Mason<cr>", {}),
+					-- {
+					-- 	type = "text",
+					-- 	val = "Tools",
+					-- 	opts = {
+					-- 		position = "center",
+					-- 		hl = "@punctuation",
+					-- 	},
+					-- },
+					button("L", "󰚥  Lazy", "<cmd>Lazy<cr>", {}),
+					button("M", "󱊈  Mason", "<cmd>Mason<cr>", {}),
 				},
 				opts = {
 					spacing = 1,
@@ -205,11 +206,11 @@ return {
 						.. lazy_stats.count
 						.. " plugins in "
 						.. string.format("%.2f", lazy_stats.startuptime)
-						.. " ms"
+						.. "ms"
 				end,
 				opts = {
 					position = "center",
-					hl = "@comment",
+					hl = "@boolean",
 				},
 			}
 
@@ -217,12 +218,12 @@ return {
 				layout = {
 					{ type = "padding", val = 8 },
 					header,
-					{ type = "padding", val = 6 },
-					subtext,
 					{ type = "padding", val = 1 },
+					subtext,
+					{ type = "padding", val = 4 },
 					main_group,
-					-- { type = "padding", val = 1 },
-					-- tools_group,
+					{ type = "padding", val = 1 },
+					tools_group,
 					-- { type = "padding", val = 2 },
 					-- quit_button,
 					{ type = "padding", val = 4 },
