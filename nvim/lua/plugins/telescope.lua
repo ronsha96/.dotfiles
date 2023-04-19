@@ -32,7 +32,7 @@ return {
 					layout_strategy = "horizontal",
 					layout_config = {
 						horizontal = {
-							prompt_position = "top",
+							-- prompt_position = "top",
 							preview_width = 0.55,
 							results_width = 0.8,
 						},
@@ -58,9 +58,9 @@ return {
 
 			-- Extensions
 			telescope.load_extension("fzy_native")
-			-- telescope.load_extension("smart_history")
 			telescope.load_extension("ui-select")
 			telescope.load_extension("project")
+			telescope.load_extension("live_grep_args")
 
 			-- Mappings
 
@@ -166,12 +166,13 @@ return {
 							default_text = selected_text,
 						})
 					end,
-					"Live grep",
+					"Live Grep",
 				},
 				R = {
 					function()
+						telescope.extensions.live_grep_args.live_grep_args()
 					end,
-					"Live grep w/ args",
+					"Live Grep w/ args",
 				},
 			}, {
 				mode = { "n", "v" },
