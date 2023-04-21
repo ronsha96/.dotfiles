@@ -13,8 +13,9 @@ return {
 			require("colorizer").setup()
 		end,
 	},
-	{ "andymass/vim-matchup",     event = "VeryLazy" },
-	{ "romainl/vim-cool",         event = "VeryLazy" },
+	{ "andymass/vim-matchup", event = "VeryLazy" },
+	{ "romainl/vim-cool",     event = "VeryLazy" },
+	{ "tpope/vim-sleuth",     event = "VeryLazy" },
 	{
 		"ggandor/leap.nvim",
 		keys = { "s", "S" },
