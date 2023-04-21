@@ -15,7 +15,6 @@ return {
 	},
 	{ "andymass/vim-matchup",     event = "VeryLazy" },
 	{ "romainl/vim-cool",         event = "VeryLazy" },
-	{ "elihunter173/dirbuf.nvim", event = "VeryLazy" },
 	{
 		"ggandor/leap.nvim",
 		keys = { "s", "S" },
