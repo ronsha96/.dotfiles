@@ -1,7 +1,7 @@
 return {
 	-- Flutter tools
 	{ "akinsho/flutter-tools.nvim", event = "VeryLazy" },
-	{ "reisub0/hot-reload.vim", event = "VeryLazy" },
+	{ "reisub0/hot-reload.vim",     event = "VeryLazy" },
 
 	-- Lsp
 	{
@@ -111,11 +111,8 @@ return {
 				"cssls",
 				"unocss",
 				"rome",
-				"prettierd",
 				"rust_analyzer",
-				"codelldb",
 				"lua_ls",
-				"stylua",
 				"yamlls",
 			})
 
@@ -296,8 +293,8 @@ return {
 					{ name = "path" },
 					{ name = "git" },
 					-- { name = "cmdline" },
-					{ name = "buffer", keyword_length = 3 },
-					{ name = "luasnip", keyword_length = 2 },
+					{ name = "buffer",   keyword_length = 3 },
+					{ name = "luasnip",  keyword_length = 2 },
 				}),
 				window = {
 					completion = cmp.config.window.bordered(),
