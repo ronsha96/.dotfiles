@@ -307,6 +307,9 @@ return {
 						preset = "default",
 					}),
 				},
+				experimental = {
+					ghost_text = true,
+				},
 			})
 
 			require("cmp_git").setup()
