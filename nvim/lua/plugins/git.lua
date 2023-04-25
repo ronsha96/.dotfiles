@@ -54,7 +54,7 @@ return {
 		event = "BufRead",
 		config = function()
 			require("git-conflict").setup()
-			vim.keymap.set("n", "<leader>gl", ":GitConflictListQf")
+			vim.keymap.set("n", "<leader>gl", "<cmd>GitConflictListQf<cr>")
 		end,
 	},
 	{
