@@ -270,8 +270,9 @@ return {
 
 			luasnip.filetype_extend("all", { "_" })
 
-			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local cmp = require("cmp")
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			local cmp_action = require("lsp-zero").cmp_action()
 
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
@@ -285,8 +286,10 @@ return {
 					["<C-,>"] = cmp.mapping.complete(),
 					["<cr>"] = cmp.mapping.confirm({
 						select = true,
-						behavior = cmp.ConfirmBehavior.Replace,
+						-- behavior = cmp.ConfirmBehavior.Replace,
 					}),
+					["<Tab>"] = cmp_action.luasnip_supertab(),
+					["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp", trigger_characters = { "-" } },
