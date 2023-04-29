@@ -4,6 +4,7 @@ return {
 		build = ":TSUpdate",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-context",
+			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
 		config = function()
 			local utils = require("utils")
@@ -38,6 +39,9 @@ return {
 					"bash",
 				},
 				autotag = {
+					enable = true,
+				},
+				context_commentstring = {
 					enable = true,
 				},
 			})
