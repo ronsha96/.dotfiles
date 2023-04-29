@@ -3,7 +3,7 @@ return {
 		"akinsho/toggleterm.nvim",
 		event = "VeryLazy",
 		keys = {
-			{ "<C-\\>", "<cmd>ToggleTerm direction=float<cr>", mode = { "n", "t" } },
+			{ "<C-\\>", "<cmd>1ToggleTerm direction=float<cr>", mode = { "n", "t" } },
 			{ "<A-\\>", "<cmd>2ToggleTerm direction=float<cr>", mode = { "n", "t" } },
 		},
 		config = function()
