@@ -1,7 +1,7 @@
 local M = {}
 
 function M.is_windows()
-	return (vim.fn.has("win32") or vim.fn.has("win64")) and not vim.fn.has("wsl")
+	return (vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1) and vim.fn.has("wsl") == 0
 end
 
 return M
