@@ -3,11 +3,15 @@ return {
 		"akinsho/toggleterm.nvim",
 		event = "VeryLazy",
 		keys = {
-			{ "<C-\\>", "<cmd>ToggleTerm size=80 direction=vertical<cr>",   mode = { "n", "t" } },
-			{ "<A-\\>", "<cmd>ToggleTerm size=20 direction=horizontal<cr>", mode = { "n", "t" } },
+			{ "<C-\\>", "<cmd>ToggleTerm direction=float<cr>", mode = { "n", "t" } },
+			{ "<A-\\>", "<cmd>2ToggleTerm direction=float<cr>", mode = { "n", "t" } },
 		},
 		config = function()
-			require("toggleterm").setup()
+			require("toggleterm").setup({
+				float_opts = {
+					border = "curved",
+				},
+			})
 
 			function _G.set_terminal_keymaps()
 				local opts = { buffer = 0 }
