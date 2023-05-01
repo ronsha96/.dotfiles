@@ -9,13 +9,6 @@ end
 
 config.default_prog = { "powershell" }
 
-config.unix_domains = {
-	{
-		name = "wsl",
-		serve_command = { "wsl", "wezterm-mux-server", "--daemonize" },
-	},
-}
-
 -- local font_noto= "NotoSansMono Nerd Font"
 local font_iosevka = "Iosevka Nerd Font"
 
