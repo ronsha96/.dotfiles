@@ -16,22 +16,22 @@ config.force_reverse_video_cursor = true
 config.color_scheme = "Kanagawa (Gogh)"
 config.colors = {
 	tab_bar = {
-		background = "#090617",
-		inactive_tab_edge = "#090617",
+		background = "#0f0f13",
+		inactive_tab_edge = "#0f0f13",
 		active_tab = {
 			bg_color = "#1f1f28",
 			fg_color = "#dbd7bc",
 		},
 		inactive_tab = {
-			bg_color = "#090617",
+			bg_color = "#0f0f13",
 			fg_color = "#727169",
 		},
 		inactive_tab_hover = {
-			bg_color = "#090617",
+			bg_color = "#0f0f13",
 			fg_color = "#dbd7bc",
 		},
 		new_tab = {
-			bg_color = "#090617",
+			bg_color = "#0f0f13",
 			fg_color = "#727169",
 		},
 		new_tab_hover = {
@@ -44,8 +44,8 @@ config.colors = {
 config.window_frame = {
 	font = wezterm.font({ family = font_iosevka, weight = "Bold" }),
 	font_size = 12,
-	active_titlebar_bg = "#090617",
-	inactive_titlebar_bg = "#090617",
+	active_titlebar_bg = "#0f0f13",
+	inactive_titlebar_bg = "#0f0f13",
 }
 
 config.window_padding = {
