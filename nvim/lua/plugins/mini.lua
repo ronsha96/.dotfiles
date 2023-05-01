@@ -28,4 +28,17 @@ return {
 			})
 		end,
 	},
+	{
+		"echasnovski/mini.pairs",
+		event = "VeryLazy",
+		config = function()
+			require("mini.pairs").setup()
+		end,
+	},
+	{
+		"echasnovski/mini.surround",
+		config = function()
+			require("mini.surround").setup()
+		end,
+	},
 }

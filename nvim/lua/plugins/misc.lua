@@ -17,13 +17,6 @@ return {
 	{ "romainl/vim-cool", event = "VeryLazy" },
 	{ "tpope/vim-sleuth", event = "VeryLazy" },
 	{
-		"ggandor/leap.nvim",
-		keys = { "s", "S" },
-		config = function()
-			require("leap").set_default_keymaps()
-		end,
-	},
-	{
 		"numToStr/Comment.nvim",
 		event = "BufReadPost",
 		config = function()
@@ -64,11 +57,15 @@ return {
 		end,
 	},
 	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = function()
-			require("nvim-autopairs").setup()
-		end,
+		"nvim-pack/nvim-spectre",
+		keys = {
+			{
+				"<leader>sr",
+				function()
+					require("spectre").open()
+				end,
+				desc = "Replace in files (Spectre)",
+			},
+		},
 	},
-	{ "brooth/far.vim", event = "VeryLazy" },
 }

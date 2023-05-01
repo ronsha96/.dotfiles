@@ -7,10 +7,12 @@ return {
 			local mark = require("harpoon.mark")
 			local ui = require("harpoon.ui")
 
-			local opts = { remap = false, silent = false }
+			local opts = { remap = false }
 
 			vim.keymap.set("n", "ma", mark.add_file, opts)
 			vim.keymap.set("n", "mm", ui.toggle_quick_menu, opts)
+			vim.keymap.set("n", "m,", ui.nav_prev, opts)
+			vim.keymap.set("n", "m.", ui.nav_next, opts)
 
 			for n = 1, 9 do
 				vim.keymap.set("n", "m" .. n, function()

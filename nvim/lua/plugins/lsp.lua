@@ -270,12 +270,12 @@ return {
 			luasnip.filetype_extend("all", { "_" })
 
 			local cmp = require("cmp")
-			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local cmp_action = require("lsp-zero").cmp_action()
 
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
 			cmp.setup({
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
 				snippet = {
 					expand = function(args)
 						luasnip.lsp_expand(args.body)
