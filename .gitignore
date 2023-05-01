@@ -7,3 +7,5 @@
 
 !/nvim
 !/alacritty
+
+!.wezterm.lua
