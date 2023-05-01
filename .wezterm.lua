@@ -12,6 +12,7 @@ local font_iosevka = "Iosevka Nerd Font"
 
 config.use_fancy_tab_bar = true
 config.force_reverse_video_cursor = true
+
 config.color_scheme = "Kanagawa (Gogh)"
 config.colors = {
 	tab_bar = {
@@ -39,11 +40,19 @@ config.colors = {
 		},
 	},
 }
+
 config.window_frame = {
 	font = wezterm.font({ family = font_iosevka, weight = "Bold" }),
 	font_size = 12,
 	active_titlebar_bg = "#090617",
 	inactive_titlebar_bg = "#090617",
+}
+
+config.window_padding = {
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
 }
 
 config.font = wezterm.font(font_iosevka)
