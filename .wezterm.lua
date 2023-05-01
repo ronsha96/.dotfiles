@@ -7,6 +7,15 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+config.default_prog = { "powershell" }
+
+config.unix_domains = {
+	{
+		name = "wsl",
+		serve_command = { "wsl", "wezterm-mux-server", "--daemonize" },
+	},
+}
+
 -- local font_noto= "NotoSansMono Nerd Font"
 local font_iosevka = "Iosevka Nerd Font"
 
@@ -57,8 +66,6 @@ config.window_padding = {
 
 config.font = wezterm.font(font_iosevka)
 config.font_size = 16
-
-config.default_prog = { "powershell" }
 
 config.keys = {
 	{
