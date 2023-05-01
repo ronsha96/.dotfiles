@@ -14,8 +14,8 @@ return {
 		end,
 	},
 	{ "andymass/vim-matchup", event = "VeryLazy" },
-	{ "romainl/vim-cool",     event = "VeryLazy" },
-	{ "tpope/vim-sleuth",     event = "VeryLazy" },
+	{ "romainl/vim-cool", event = "VeryLazy" },
+	{ "tpope/vim-sleuth", event = "VeryLazy" },
 	{
 		"ggandor/leap.nvim",
 		keys = { "s", "S" },
@@ -48,10 +48,13 @@ return {
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("indent_blankline").setup({})
-		end,
+		event = { "BufReadPost", "BufNewFile" },
+		opts = {
+			char = "│",
+			filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
+			show_trailing_blankline_indent = false,
+			show_current_context = false,
+		},
 	},
 	{
 		"windwp/nvim-ts-autotag",
