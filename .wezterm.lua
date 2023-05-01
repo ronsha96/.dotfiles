@@ -15,4 +15,12 @@ config.font_size = 16
 
 config.default_prog = { "powershell" }
 
+config.keys = {
+	{
+		key = "w",
+		mods = "CTRL|ALT",
+		action = wezterm.action.CloseCurrentPane({ confirm = true }),
+	},
+}
+
 return config
