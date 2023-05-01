@@ -1,7 +1,7 @@
 return {
 	-- Flutter tools
 	{ "akinsho/flutter-tools.nvim", event = "VeryLazy" },
-	{ "reisub0/hot-reload.vim",     event = "VeryLazy" },
+	{ "reisub0/hot-reload.vim", event = "VeryLazy" },
 
 	-- Lsp
 	{
@@ -76,6 +76,11 @@ return {
 							{
 								"rafamadriz/friendly-snippets",
 								event = "InsertCharPre",
+								config = function()
+									local loader = require("luasnip.loaders.from_vscode")
+									loader.lazy_load()
+									loader.lazy_load({ paths = { "../../snippets/solid-snippets/snippets" } })
+								end,
 							},
 						},
 					},
@@ -262,12 +267,6 @@ return {
 
 			local luasnip = require("luasnip")
 
-			require("luasnip.loaders.from_vscode").lazy_load({
-				paths = {
-					"../../snippets/solid-snippets/snippets",
-				},
-			})
-
 			luasnip.filetype_extend("all", { "_" })
 
 			local cmp = require("cmp")
@@ -284,20 +283,22 @@ return {
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-,>"] = cmp.mapping.complete(),
-					["<cr>"] = cmp.mapping.confirm({
-						select = true,
-						-- behavior = cmp.ConfirmBehavior.Replace,
-					}),
+					["<C-Space>"] = cmp.mapping.complete(),
 					["<Tab>"] = cmp_action.luasnip_supertab(),
 					["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+					["<cr>"] = cmp.mapping.confirm({ select = true }),
+					["<S-cr>"] = cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = true,
+					}),
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp", trigger_characters = { "-" } },
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+					{ name = "buffer" },
 					{ name = "path" },
 					{ name = "git" },
 					-- { name = "cmdline" },
-					{ name = "buffer",   keyword_length = 3 },
-					{ name = "luasnip",  keyword_length = 2 },
 				}),
 				window = {
 					completion = cmp.config.window.bordered(),
@@ -311,7 +312,9 @@ return {
 					}),
 				},
 				experimental = {
-					ghost_text = true,
+					ghost_text = {
+						hl_group = "LspCodeLens",
+					},
 				},
 			})
 
