@@ -36,8 +36,6 @@ return {
 			)
 		end
 
-		vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Buffer: Delete" })
-
 		vim.keymap.set("n", "<leader>b,", "<cmd>BufferLineCyclePrev<cr>", { desc = "Buffer: Cycle prev" })
 		vim.keymap.set("n", "<leader>b.", "<cmd>BufferLineCycleNext<cr>", { desc = "Buffer: Cycle next" })
 

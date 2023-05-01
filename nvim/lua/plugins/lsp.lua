@@ -62,6 +62,18 @@ return {
 					})
 				end,
 			},
+			{
+				"SmiteshP/nvim-navic",
+				lazy = true,
+				config = function()
+					vim.g.navic_silence = true
+					require("nvim-navic").setup({
+						separator = " ",
+						highlight = true,
+						depth_limit = 5,
+					})
+				end,
+			},
 
 			-- Completion
 			{
@@ -90,17 +102,13 @@ return {
 					"hrsh7th/cmp-cmdline",
 					"petertriho/cmp-git",
 					"onsails/lspkind-nvim",
-					"derektata/lorem.nvim",
 					{
 						"folke/neodev.nvim",
-						config = function()
-							require("neodev").setup({
-								library = {
-									types = true,
-									plugins = { "nvim-dap-ui" },
-								},
-							})
-						end,
+						opts = {
+							experimental = {
+								pathStrict = true,
+							},
+						},
 					},
 				},
 			},
@@ -123,8 +131,8 @@ return {
 
 			lsp.skip_server_setup({ "rust_analyzer" })
 
-			lsp.on_attach(function(_, bufnr)
-				local opts = { buffer = bufnr, remap = false }
+			lsp.on_attach(function(client, buffer)
+				local opts = { buffer = buffer, remap = false }
 
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -146,8 +154,11 @@ return {
 					require("telescope.builtin").lsp_workspace_symbols({})
 				end, opts)
 
-				-- Enable this if I want format on save
 				-- lsp.buffer_autoformat()
+
+				if client.server_capabilities.documentSymbolProvider then
+					require("nvim-navic").attach(client, buffer)
+				end
 			end)
 
 			lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
@@ -213,9 +224,9 @@ return {
 
 			rust_tools.setup({
 				-- server = {
-				-- 	on_attach = function(_, bufnr)
-				-- 		vim.keymap.set("n", "<leader>ca", rust_tools.hover_actions.hover_actions, { remap = false, buffer = bufnr })
-				-- 		vim.keymap.set("n", "ga", rust_tools.code_action_group.code_action_group, { remap = true, buffer = bufnr })
+				-- 	on_attach = function(_, buffer)
+				-- 		vim.keymap.set("n", "<leader>ca", rust_tools.hover_actions.hover_actions, { remap = false, buffer = buffer })
+				-- 		vim.keymap.set("n", "ga", rust_tools.code_action_group.code_action_group, { remap = true, buffer = buffer })
 				-- 	end
 				-- },
 				settings = {
