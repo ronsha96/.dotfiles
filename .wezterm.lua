@@ -17,6 +17,26 @@ config.default_prog = { "powershell" }
 
 config.keys = {
 	{
+		key = "h",
+		mods = "CTRL|ALT",
+		action = act.ActivatePaneDirection("Left"),
+	},
+	{
+		key = "l",
+		mods = "CTRL|ALT",
+		action = act.ActivatePaneDirection("Right"),
+	},
+	{
+		key = "k",
+		mods = "CTRL|ALT",
+		action = act.ActivatePaneDirection("Up"),
+	},
+	{
+		key = "j",
+		mods = "CTRL|ALT",
+		action = act.ActivatePaneDirection("Down"),
+	},
+	{
 		key = "w",
 		mods = "CTRL|ALT",
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
