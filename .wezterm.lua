@@ -26,6 +26,11 @@ config.keys = {
 		mods = "CTRL|ALT",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
+	{
+		key = '"',
+		mods = "CTRL|ALT|SHIFT",
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
 }
 
 return config
