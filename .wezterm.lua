@@ -22,14 +22,14 @@ config.keys = {
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
 	},
 	{
-		key = "'",
+		key = '"',
 		mods = "CTRL|ALT",
-		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		key = '"',
+		key = "'",
 		mods = "CTRL|ALT|SHIFT",
-		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 }
 
