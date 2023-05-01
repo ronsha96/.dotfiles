@@ -21,6 +21,11 @@ config.keys = {
 		mods = "CTRL|ALT",
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
 	},
+	{
+		key = "'",
+		mods = "CTRL|ALT",
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
 }
 
 return config
