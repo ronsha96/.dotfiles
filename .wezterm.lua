@@ -13,16 +13,37 @@ local font_iosevka = "Iosevka Nerd Font"
 config.use_fancy_tab_bar = true
 config.force_reverse_video_cursor = true
 config.color_scheme = "Kanagawa (Gogh)"
-config.color = {
+config.colors = {
 	tab_bar = {
-		inactive_titlebar_bg = "#16161d",
+		background = "#090617",
+		active_tab = {
+			bg_color = "#1f1f28",
+			fg_color = "#dbd7bc",
+		},
+		inactive_tab = {
+			bg_color = "#1f1f28",
+			fg_color = "#727169",
+		},
+		inactive_tab_hover = {
+			bg_color = "#1f1f28",
+			fg_color = "#dbd7bc",
+		},
+		inactive_tab_edge = "#090617",
+		new_tab = {
+			bg_color = "#544a69",
+			fg_color = "#090617",
+		},
+		new_tab_hover = {
+			bg_color = "#9181b6",
+			fg_color = "#090617",
+		},
 	},
 }
 config.window_frame = {
 	font = wezterm.font({ family = font_iosevka, weight = "Bold" }),
 	font_size = 12,
 	active_titlebar_bg = "#1f1f28",
-	inactive_titlebar_bg = "#16161d",
+	inactive_titlebar_bg = "#1f1f28",
 }
 
 config.font = wezterm.font(font_iosevka)
