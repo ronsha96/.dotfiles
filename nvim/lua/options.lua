@@ -44,9 +44,9 @@ vim.opt.joinspaces = true
 
 vim.opt.cursorline = true
 
-vim.opt.wrap = true
-vim.opt.linebreak = true
-vim.opt.breakindent = true
+vim.opt.wrap = false
+-- vim.opt.linebreak = true
+-- vim.opt.breakindent = true
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
