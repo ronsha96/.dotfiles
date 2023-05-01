@@ -7,21 +7,25 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+-- local font_noto= "NotoSansMono Nerd Font"
+local font_iosevka = "Iosevka Nerd Font"
+
+config.use_fancy_tab_bar = true
 config.force_reverse_video_cursor = true
 config.color_scheme = "Kanagawa (Gogh)"
-config.use_fancy_tab_bar = false
-
-config.tab_bar = {
-	font_size = 12,
-	active_tab = {
-		bold = true,
+config.color = {
+	tab_bar = {
+		inactive_titlebar_bg = "#16161d",
 	},
 }
+config.window_frame = {
+	font = wezterm.font({ family = font_iosevka, weight = "Bold" }),
+	font_size = 12,
+	active_titlebar_bg = "#1f1f28",
+	inactive_titlebar_bg = "#16161d",
+}
 
-config.tab_bar_at_bottom = false
-
--- config.font = wezterm.font("NotoSansMono Nerd Font")
-config.font = wezterm.font("Iosevka Nerd Font")
+config.font = wezterm.font(font_iosevka)
 config.font_size = 16
 
 config.default_prog = { "powershell" }
