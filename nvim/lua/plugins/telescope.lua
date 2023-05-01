@@ -83,7 +83,7 @@ return {
 					end,
 					"Project files",
 				},
-				g = {
+				F = {
 					function()
 						builtin.find_files({
 							no_ignore = false,
