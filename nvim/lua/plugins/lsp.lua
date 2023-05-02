@@ -1,7 +1,7 @@
 return {
 	-- Flutter tools
 	{ "akinsho/flutter-tools.nvim", event = "VeryLazy" },
-	{ "reisub0/hot-reload.vim", event = "VeryLazy" },
+	{ "reisub0/hot-reload.vim",     event = "VeryLazy" },
 
 	-- Lsp
 	{
@@ -147,14 +147,17 @@ return {
 				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-				vim.keymap.set({ "n", "v", "x" }, "<leader>f", function()
-					vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
-				end, opts)
 				vim.keymap.set("n", "<leader>ws", function()
 					require("telescope.builtin").lsp_workspace_symbols({})
 				end, opts)
 
 				-- lsp.buffer_autoformat()
+
+				if client.server_capabilities.documentFormattingProvider then
+					vim.keymap.set({ "n", "v", "x" }, "<leader>f", function()
+						vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+					end, { buffer = buffer, remap = false, desc = "Format document" })
+				end
 
 				if client.server_capabilities.documentSymbolProvider then
 					require("nvim-navic").attach(client, buffer)
