@@ -1,7 +1,7 @@
 return {
 	{
 		"dinhhuy258/git.nvim",
-		event = "BufRead",
+		event = "VeryLazy",
 		config = function()
 			require("git").setup({
 				keymaps = {
