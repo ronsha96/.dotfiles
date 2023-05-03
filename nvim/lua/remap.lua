@@ -1,4 +1,4 @@
-local opts = { remap = false, silent = true }
+local opts = { remap = false }
 
 -- Leader
 vim.g.mapleader = " "
@@ -28,10 +28,17 @@ vim.keymap.set("n", "<c-v>", "<Nop>", opts)
 vim.keymap.set("n", "<leader>y", 'ggVG"+y', opts)
 
 -- Window mappings
-vim.keymap.set("n", "<c-h>", "<c-w>h", opts)
-vim.keymap.set("n", "<c-j>", "<c-w>j", opts)
-vim.keymap.set("n", "<c-k>", "<c-w>k", opts)
-vim.keymap.set("n", "<c-l>", "<c-w>l", opts)
+if vim.fn.executable("tmux") == 1 then
+	vim.keymap.set("n", "<c-h>", "<cmd>TmuxNavigateLeft<cr>", opts)
+	vim.keymap.set("n", "<c-j>", "<cmd>TmuxNavigateDown<cr>", opts)
+	vim.keymap.set("n", "<c-k>", "<cmd>TmuxNavigateUp<cr>", opts)
+	vim.keymap.set("n", "<c-l>", "<cmd>TmuxNavigateRight<cr>", opts)
+else
+	vim.keymap.set("n", "<c-h>", "<c-w>h", opts)
+	vim.keymap.set("n", "<c-j>", "<c-w>j", opts)
+	vim.keymap.set("n", "<c-k>", "<c-w>k", opts)
+	vim.keymap.set("n", "<c-l>", "<c-w>l", opts)
+end
 
 -- Cancel highlight
 vim.keymap.set("n", "/\\", ":noh<cr>", opts)
