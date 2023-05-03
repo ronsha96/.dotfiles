@@ -129,7 +129,10 @@ return {
 				"yamlls",
 			})
 
-			lsp.skip_server_setup({ "rust_analyzer" })
+			lsp.skip_server_setup({
+				"rust_analyzer", -- We setup rust_analyzer via rust-tools
+				"rome", -- FIXME: Rome makes things slow af
+			})
 
 			lsp.on_attach(function(client, buffer)
 				local opts = { buffer = buffer, remap = false }
