@@ -63,6 +63,6 @@ if utils.is_windows() then
 end
 
 -- Neovide options
-vim.o.guifont = "NotoSansMono Nerd Font"
--- vim.o.guifont = "Iosevka Nerd Font"
+-- vim.o.guifont = "NotoSansMono Nerd Font"
+vim.o.guifont = "Iosevka Nerd Font"
 -- vim.o.guifont = "Hack Nerd Font"
