@@ -11,6 +11,7 @@ $python\
 $character"""
 
 right_format = "$time"
+continuation_prompt = " "
 
 [time]
 disabled = false
@@ -24,9 +25,9 @@ disabled = true
 style = "blue"
 
 [character]
-success_symbol = "[](purple)"
+success_symbol = "[](green)"
 error_symbol = "[](red)"
-vimcmd_symbol = "[](green)"
+vimcmd_symbol = "[](purple)"
 
 [git_branch]
 format = "[$branch]($style)"
@@ -50,7 +51,3 @@ style = "bright-black"
 [cmd_duration]
 format = "[$duration]($style) "
 style = "yellow"
-
-[python]
-format = "[$virtualenv]($style) "
-style = "bright-black"
