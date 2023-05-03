@@ -10,7 +10,7 @@ $line_break\
 $character"""
 
 right_format = "$time"
-continuation_prompt = " "
+continuation_prompt = "  "
 
 [time]
 disabled = false
@@ -25,9 +25,9 @@ read_only = " "
 style = "blue"
 
 [character]
-success_symbol = "[ ](green)"
-error_symbol = "[ ](red)"
-vimcmd_symbol = "[ ](purple)"
+success_symbol = "[  ](green)"
+error_symbol = "[  ](red)"
+vimcmd_symbol = "[  ](purple)"
 
 [git_branch]
 format = "[$branch]($style)"
@@ -37,16 +37,14 @@ symbol = " "
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
 style = "cyan"
-conflicted = "="
-ahead = "⇡"
-behind = "⇣"
-diverged = "⇕"
-untracked = "?"
-up_to_date = ""
-modified = "!"
-staged = "+"
-renamed = "»"
-deleted = "x"
+conflicted = ""
+ahead = "󰳡"
+behind = "󰳛"
+untracked = ""
+modified = ""
+staged = ""
+renamed = ""
+deleted = ""
 stashed = "≡"
 
 [git_state]
