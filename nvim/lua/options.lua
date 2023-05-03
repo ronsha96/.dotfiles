@@ -36,7 +36,7 @@ vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.updatetime = 10
+vim.opt.updatetime = 50
 
 vim.opt.hidden = true
 vim.opt.ignorecase = true
