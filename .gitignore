@@ -6,6 +6,7 @@
 !starship.toml
 
 !/nvim
+
 !/alacritty
 
 !.wezterm.lua

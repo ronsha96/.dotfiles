@@ -3,10 +3,10 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{ "nvim-telescope/telescope-live-grep-args.nvim", lazy = true },
-			{ "nvim-telescope/telescope-fzy-native.nvim",     lazy = true },
-			{ "nvim-telescope/telescope-ui-select.nvim",      lazy = true },
-			{ "nvim-telescope/telescope-project.nvim",        lazy = true },
+			"nvim-telescope/telescope-live-grep-args.nvim",
+			"nvim-telescope/telescope-fzy-native.nvim",
+			"nvim-telescope/telescope-ui-select.nvim",
+			"nvim-telescope/telescope-project.nvim",
 		},
 		config = function()
 			local telescope = require("telescope")
@@ -56,6 +56,7 @@ return {
 
 			-- Extensions
 			telescope.load_extension("fzy_native")
+			telescope.load_extension("live_grep_args")
 			telescope.load_extension("ui-select")
 			telescope.load_extension("project")
 			telescope.load_extension("live_grep_args")
