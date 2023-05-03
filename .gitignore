@@ -1,12 +1,1 @@
-/*
-
-!.gitignore
-!README.md
-
-!starship.toml
-
-!/nvim
-
-!/alacritty
-
-!.wezterm.lua
+*
