@@ -74,7 +74,7 @@ return {
 							"--is-inside-work-tree",
 						})
 
-						local opts = { no_ignore = false, hidden = true }
+						local opts = { no_ignore = true, hidden = true }
 
 						if ret == 0 then
 							builtin.git_files(opts)
@@ -87,7 +87,7 @@ return {
 				F = {
 					function()
 						builtin.find_files({
-							no_ignore = false,
+							no_ignore = true,
 							hidden = true,
 						})
 					end,
