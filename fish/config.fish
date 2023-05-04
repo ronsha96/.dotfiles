@@ -19,7 +19,7 @@ set -x LC_TYPE en_US.UTF-8
 
 bass source $HOME/.cargo/env
 
-# set -x NVM_DIR "$HOME/.nvm"
+set -x NVM_DIR "$HOME/.nvm"
 
 # Alias codelldb
 alias codelldb=$HOME/codelldb/extension/adapter/codelldb
