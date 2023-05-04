@@ -119,7 +119,11 @@ return {
 				},
 				p = {
 					function()
-						telescope.extensions.project.project({ display_type = "full" })
+						telescope.extensions.project.project({
+							display_type = "full",
+							no_ignore = true,
+							hidden_files = true,
+						})
 					end,
 					"Project",
 				},
