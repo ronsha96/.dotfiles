@@ -1,6 +1,9 @@
 # Vi mode
 fish_vi_key_bindings
 
+# Disable welcome message
+set fish_greeting
+
 # Emulates vim's cursor shape behavior
 # Set the normal and visual mode cursors to a block
 set fish_cursor_default block
