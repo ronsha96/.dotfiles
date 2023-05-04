@@ -1,2 +1,2 @@
-search_paths = ['/home/ron']
+search_paths = ['/home/ron/.config']
 default_session = 'main'
