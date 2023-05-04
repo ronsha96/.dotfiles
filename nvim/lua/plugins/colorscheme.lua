@@ -1,7 +1,6 @@
 return {
 	{
 		"ellisonleao/gruvbox.nvim",
-		lazy = false,
 		priority = 1000,
 		enabled = false,
 		config = function()
@@ -11,7 +10,6 @@ return {
 	},
 	{
 		"Shatur/neovim-ayu",
-		lazy = false,
 		priority = 1000,
 		enabled = false,
 		config = function()
@@ -33,7 +31,6 @@ return {
 	},
 	{
 		"EdenEast/nightfox.nvim",
-		lazy = false,
 		priority = 1000,
 		enabled = false,
 		config = function()
@@ -43,7 +40,6 @@ return {
 	},
 	{
 		"folke/tokyonight.nvim",
-		lazy = false,
 		priority = 1000,
 		enabled = false,
 		config = function()
@@ -59,7 +55,6 @@ return {
 	},
 	{
 		"rebelot/kanagawa.nvim",
-		lazy = false,
 		priority = 1000,
 		enabled = true,
 		config = function()
