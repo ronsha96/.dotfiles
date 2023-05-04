@@ -1,56 +1,42 @@
-set -x ZSH="$HOME/.oh-my-zsh"
+set -x LANGUAGE en_US.UTF-8
+set -x LC_ALL en_US.UTF-8
+set -x LANG en_US.UTF-8
+set -x LC_TYPE en_US.UTF-8
 
-plugins=(
-    git
-    docker
-    # zsh-autosuggestions
-    # zsh-syntax-highlighting
-)
+bass source $HOME/.cargo/env
 
-source $ZSH/oh-my-zsh.sh
-
-set -x LANGUAGE=en_US.UTF-8
-set -x LC_ALL=en_US.UTF-8
-set -x LANG=en_US.UTF-8
-set -x LC_TYPE=en_US.UTF-8
-
-source $HOME/.cargo/env
-
-set -x NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Alias codelldb
-alias codelldb=$HOME/codelldb/extension/adapter/codelldb
-
-# Alias nvim
-alias nvim=$HOME/apps/nvim/bin/nvim
-alias vim="nvim"
-alias vi="nvim"
-alias v="nvim"
-
-# Alias python & pip
-alias python=python3
-alias pip=pip3
-
-# rust analyzer
-set PATH=$HOME/.local/bin:$PATH
-
-# android sdk
-set -x JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-set -x ANDROID_HOME=$HOME/apps/android
-set -x ANDROID_SDK_ROOT=${ANDROID_HOME}
-set PATH=${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/emulator:${PATH}
-set -x ADB_SERVER_SOCKET=tcp:$(cat /etc/resolv.conf | grep nameserver | cut -d' ' -f2):5037
-
-# flutter
-set -x CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
-set PATH=$HOME/apps/flutter/bin:$PATH
-
-set -x DISPLAY=:0
-
-# Github CLI completions
-
+# set -x NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#
+# # Alias codelldb
+# alias codelldb=$HOME/codelldb/extension/adapter/codelldb
+#
+# # Alias nvim
+# alias nvim=$HOME/apps/nvim/bin/nvim
+# alias vim="nvim"
+# alias vi="nvim"
+# alias v="nvim"
+#
+# # Alias python & pip
+# alias python=python3
+# alias pip=pip3
+#
+# # rust analyzer
+# set PATH=$HOME/.local/bin:$PATH
+#
+# # android sdk
+# set -x JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+# set -x ANDROID_HOME=$HOME/apps/android
+# set -x ANDROID_SDK_ROOT=$ANDROID_HOME
+# set PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/emulator:$PATH
+# set -x ADB_SERVER_SOCKET=tcp:(cat /etc/resolv.conf | grep nameserver | cut -d' ' -f2):5037
+#
+# # flutter
+# set -x CPATH=(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)"/include"
+# set PATH=$HOME/apps/flutter/bin:$PATH
+#
+# set -x DISPLAY=:0
 
 # fish completion for gh                                   -*- shell-script -*-
 
@@ -227,6 +213,6 @@ complete -c gh -e
 
 # The call to __gh_prepare_completions will setup __gh_comp_results
 # which provides the program's completion choices.
-c
+complete -c gh -n '__gh_prepare_completions' -f -a '$__gh_comp_results'
 
 source (/usr/local/bin/starship init fish --print-full-init | psub)
