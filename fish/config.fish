@@ -205,3 +205,5 @@ complete -c gh -n '__gh_prepare_completions' -f -a '$__gh_comp_results'
 source ~/.config/fish/kanagawa-theme.fish
 
 source (/usr/local/bin/starship init fish --print-full-init | psub)
+
+tmux new-session -A -s main
