@@ -5,38 +5,25 @@ set -x LC_TYPE en_US.UTF-8
 
 bass source $HOME/.cargo/env
 
-# set -x NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#
-# # Alias codelldb
-# alias codelldb=$HOME/codelldb/extension/adapter/codelldb
-#
-# # Alias nvim
-# alias nvim=$HOME/apps/nvim/bin/nvim
-# alias vim="nvim"
-# alias vi="nvim"
-# alias v="nvim"
-#
-# # Alias python & pip
-# alias python=python3
-# alias pip=pip3
-#
-# # rust analyzer
-# set PATH=$HOME/.local/bin:$PATH
-#
-# # android sdk
-# set -x JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-# set -x ANDROID_HOME=$HOME/apps/android
-# set -x ANDROID_SDK_ROOT=$ANDROID_HOME
-# set PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/emulator:$PATH
-# set -x ADB_SERVER_SOCKET=tcp:(cat /etc/resolv.conf | grep nameserver | cut -d' ' -f2):5037
-#
-# # flutter
-# set -x CPATH=(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)"/include"
-# set PATH=$HOME/apps/flutter/bin:$PATH
-#
-# set -x DISPLAY=:0
+# set -x NVM_DIR "$HOME/.nvm"
+
+# Alias codelldb
+alias codelldb=$HOME/codelldb/extension/adapter/codelldb
+
+# Alias nvim
+alias nvim=$HOME/apps/nvim/bin/nvim
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+
+# Alias python & pip
+alias python=python3
+alias pip=pip3
+
+# rust analyzer
+set PATH $HOME/.local/bin:$PATH
+
+set -x DISPLAY :0
 
 # fish completion for gh                                   -*- shell-script -*-
 
