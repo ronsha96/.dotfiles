@@ -1,2 +1,2 @@
-search_paths = ['~/dev']
+search_paths = ['~/.config', '~/dev']
 default_session = 'main'

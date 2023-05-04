@@ -125,7 +125,7 @@ return {
 
 			local subtext = {
 				type = "text",
-				val = "~ fuck shit up ~",
+				val = "~ yeet ~",
 				opts = {
 					position = "center",
 					hl = "@type",
