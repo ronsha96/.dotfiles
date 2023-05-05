@@ -1,10 +1,5 @@
 return {
 	"akinsho/bufferline.nvim",
-	event = "VeryLazy",
-	keys = {
-		{ "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
-		{ "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
-	},
 	config = function()
 		require("bufferline").setup({
 			options = {
@@ -43,6 +38,7 @@ return {
 		vim.keymap.set("n", "<leader>b>", "<cmd>BufferLineMoveNext<cr>", { desc = "Buffer: Move next" })
 
 		vim.keymap.set("n", "<leader>bp", "<cmd>BufferLineTogglePin<cr>", { desc = "Buffer: Toggle pin" })
+		vim.keymap.set("n", "<leader>bxu", "<cmd>BufferLineGroupClose ungrouped<cr>", { desc = "Buffer: Close ungrouped" })
 
 		vim.keymap.set("n", "<leader>p", "<cmd>BufferLinePick<cr>", { desc = "Buffer: Pick" })
 	end,

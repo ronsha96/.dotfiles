@@ -4,8 +4,6 @@ local utils = require("utils")
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.o.showtabline = 2
-
 vim.opt.shadafile = ""
 
 vim.opt.completeopt = "menuone,noinsert,noselect"
