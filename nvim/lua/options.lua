@@ -31,6 +31,7 @@ vim.opt.shiftround = true
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false
 
+vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 
 vim.opt.signcolumn = "yes"
@@ -45,8 +46,11 @@ vim.opt.joinspaces = true
 vim.opt.cursorline = true
 
 vim.opt.wrap = false
--- vim.opt.linebreak = true
--- vim.opt.breakindent = true
+
+if vim.opt.wrap then
+	vim.opt.linebreak = true
+	vim.opt.breakindent = true
+end
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -62,7 +66,7 @@ if utils.is_windows() then
 	vim.opt.shellxquote = ""
 end
 
--- Neovide options
--- vim.o.guifont = "NotoSansMono Nerd Font"
-vim.o.guifont = "Iosevka Nerd Font"
--- vim.o.guifont = "Hack Nerd Font"
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })

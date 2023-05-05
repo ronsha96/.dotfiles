@@ -14,7 +14,7 @@ vim.keymap.set({ "n", "i", "v" }, "<Right>", "<Nop>", opts)
 -- Unmap visual block in favor of <c-q>
 vim.keymap.set("n", "<c-v>", "<Nop>", opts)
 
--- Yank all
+-- Yank entire buffer
 vim.keymap.set("n", "<leader>y", 'ggVG"+y', opts)
 
 -- Window mappings when tmux is not available
