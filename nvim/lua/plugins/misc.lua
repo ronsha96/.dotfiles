@@ -13,9 +13,8 @@ return {
 			require("colorizer").setup()
 		end,
 	},
-	{ "andymass/vim-matchup", event = "VeryLazy" },
-	{ "romainl/vim-cool",     event = "VeryLazy" },
-	{ "tpope/vim-sleuth",     event = "VeryLazy" },
+	{ "romainl/vim-cool", event = "VeryLazy" },
+	{ "tpope/vim-sleuth", event = "VeryLazy" },
 	{
 		"numToStr/Comment.nvim",
 		event = "BufReadPost",
@@ -118,13 +117,6 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		config = function()
 			require("nvim-web-devicons").setup()
-		end,
-	},
-	{
-		"windwp/nvim-ts-autotag",
-		event = "InsertEnter",
-		config = function()
-			require("nvim-ts-autotag").setup()
 		end,
 	},
 	{
