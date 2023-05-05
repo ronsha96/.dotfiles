@@ -256,8 +256,8 @@ live_config_reload: true
 # Default:
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
-shell:
-  program: wsl
+# shell:
+#   program: wsl
 #  args:
 #    - --login
 
@@ -265,7 +265,7 @@ shell:
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-working_directory: "\\\\wsl.localhost\\Ubuntu\\home\\ron"
+# working_directory: "\\\\wsl.localhost\\Ubuntu\\home\\ron"
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
 
