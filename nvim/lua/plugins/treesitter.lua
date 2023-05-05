@@ -10,6 +10,25 @@ return {
 			local utils = require("utils")
 
 			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"lua",
+					"vim",
+					"rust",
+					"toml",
+					"markdown",
+					"markdown_inline",
+					"c",
+					"html",
+					"css",
+					"javascript",
+					"typescript",
+					"tsx",
+					"json",
+					"yaml",
+					"regex",
+					"bash",
+					"fish"
+				},
 				matchup = {
 					enable = true,
 				},
@@ -20,23 +39,6 @@ return {
 				indent = {
 					enable = true,
 					disable = {},
-				},
-				ensure_installed = {
-					"json",
-					"yaml",
-					"toml",
-					"rust",
-					"markdown",
-					"markdown_inline",
-					"c",
-					"tsx",
-					"fish",
-					"css",
-					"html",
-					"lua",
-					"vim",
-					"regex",
-					"bash",
 				},
 				autotag = {
 					enable = true,
