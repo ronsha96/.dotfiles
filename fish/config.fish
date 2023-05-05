@@ -1,3 +1,14 @@
+# Mac stuff
+set -x PATH "/usr/local/opt/mysql@5.7/bin:$PATH"
+set -x LDFLAGS "-L/usr/local/opt/mysql@5.7/lib"
+set -x CPPFLAGS "-I/usr/local/opt/mysql@5.7/include"
+set -x ZSH "/Users/yaakov/.oh-my-zsh"
+set PATH $PATH:/usr/local/mysql/bin
+set PATH $PATH:/Users/ronsha/Library/Android/sdk/platform-tools/
+set PATH $PATH:/Users/ronsha/.local/bin/
+
+bass source ~/.k8s-aliases
+
 # Vi mode
 fish_vi_key_bindings
 
