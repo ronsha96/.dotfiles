@@ -6,20 +6,10 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<Space>", "<Nop>", opts)
 
 -- Unmap arrow keys
-vim.keymap.set("n", "<Up>", "<Nop>", opts)
-vim.keymap.set("n", "<Down>", "<Nop>", opts)
-vim.keymap.set("n", "<Left>", "<Nop>", opts)
-vim.keymap.set("n", "<Right>", "<Nop>", opts)
-
-vim.keymap.set("i", "<Up>", "<Nop>", opts)
-vim.keymap.set("i", "<Down>", "<Nop>", opts)
-vim.keymap.set("i", "<Left>", "<Nop>", opts)
-vim.keymap.set("i", "<Right>", "<Nop>", opts)
-
-vim.keymap.set("v", "<Up>", "<Nop>", opts)
-vim.keymap.set("v", "<Down>", "<Nop>", opts)
-vim.keymap.set("v", "<Left>", "<Nop>", opts)
-vim.keymap.set("v", "<Right>", "<Nop>", opts)
+vim.keymap.set({ "n", "i", "v" }, "<Up>", "<Nop>", opts)
+vim.keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>", opts)
+vim.keymap.set({ "n", "i", "v" }, "<Left>", "<Nop>", opts)
+vim.keymap.set({ "n", "i", "v" }, "<Right>", "<Nop>", opts)
 
 -- Unmap visual block
 vim.keymap.set("n", "<c-v>", "<Nop>", opts)
@@ -38,11 +28,17 @@ end
 -- Cancel highlight
 vim.keymap.set("n", "/\\", ":noh<cr>", opts)
 
+-- Move visual selection
 vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv")
 
-vim.keymap.set("n", "<C-D>", "<C-D>zz", opts)
-vim.keymap.set("n", "<C-U>", "<C-U>zz", opts)
+-- splitjoin
+vim.keymap.set("n", "J", "mzJ`z")
 
+-- Justify center page up/down
+vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
+vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
+
+-- Justify center search next/prev
 vim.keymap.set("n", "n", "nzzzv", opts)
 vim.keymap.set("n", "N", "Nzzzv", opts)
