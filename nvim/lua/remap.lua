@@ -1,6 +1,6 @@
 local opts = { remap = false }
 
--- Leader
+-- Leader (Space)
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<Space>", "<Nop>", opts)
@@ -11,7 +11,7 @@ vim.keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>", opts)
 vim.keymap.set({ "n", "i", "v" }, "<Left>", "<Nop>", opts)
 vim.keymap.set({ "n", "i", "v" }, "<Right>", "<Nop>", opts)
 
--- Unmap visual block
+-- Unmap visual block in favor of <c-q>
 vim.keymap.set("n", "<c-v>", "<Nop>", opts)
 
 -- Yank all
