@@ -91,7 +91,13 @@ return {
 								config = function()
 									local loader = require("luasnip.loaders.from_vscode")
 									loader.lazy_load()
-									loader.lazy_load({ paths = { "../../snippets/solid-snippets/snippets" } })
+									loader.lazy_load({
+										paths = {
+											"../../snippets/typescript",
+											"../../snippets/python",
+											"../../snippets/solidjs",
+										},
+									})
 								end,
 							},
 						},
