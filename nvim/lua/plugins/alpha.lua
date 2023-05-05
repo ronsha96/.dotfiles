@@ -123,15 +123,6 @@ return {
 				},
 			}
 
-			local subtext = {
-				type = "text",
-				val = "~ yeet ~",
-				opts = {
-					position = "center",
-					hl = "@type",
-				},
-			}
-
 			local function button(sc, txt, keybind, keybind_opts)
 				local sc_ = sc:gsub("%s", ""):gsub(leader, "<leader>")
 
@@ -212,8 +203,6 @@ return {
 				layout = {
 					{ type = "padding", val = math.max(7, math.floor(#chosen_header * 0.6)) },
 					header,
-					{ type = "padding", val = 1 },
-					subtext,
 					{ type = "padding", val = math.floor(#chosen_header * 0.4) },
 					main_group,
 					{ type = "padding", val = 1 },
