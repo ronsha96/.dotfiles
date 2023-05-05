@@ -5,6 +5,8 @@ return {
 			"arkav/lualine-lsp-progress",
 		},
 		config = function()
+			local utils = require("utils")
+
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -29,7 +31,12 @@ return {
 						{
 							"diagnostics",
 							sources = { "nvim_diagnostic" },
-							symbols = { error = " ", warn = " ", info = " ", hint = " " },
+							symbols = {
+								error = utils.icons.error .. " ",
+								warn = utils.icons.warning .. " ",
+								info = utils.icons.info .. " ",
+								hint = utils.icons.bulb .. " ",
+							},
 						},
 						{
 							require("lazy.status").updates,
@@ -51,7 +58,7 @@ return {
 					},
 					lualine_z = {
 						function()
-							return " " .. os.date("%R")
+							return utils.icons.clock .. " " .. os.date("%R")
 						end,
 					},
 				},

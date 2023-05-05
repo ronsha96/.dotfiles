@@ -8,7 +8,9 @@ M.icons = {
 	error = "",
 	warning = "",
 	info = "",
-	bulb = "",
+	bulb = "",
+	bug = "",
+	clock = "",
 }
 
 return M
