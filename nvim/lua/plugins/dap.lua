@@ -36,7 +36,7 @@ return {
 				dapui.close()
 			end
 
-			-- Debug: lua
+			-- Debug: Lua
 			dap.configurations.lua = {
 				{
 					type = "nlua",
@@ -72,7 +72,6 @@ return {
 			})
 
 			-- Debug: Mappings
-
 			wk.register({
 				d = {
 					name = "Debug",
