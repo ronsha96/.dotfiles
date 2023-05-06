@@ -1,10 +1,10 @@
 # Mac stuff
 # TODO: move to local config
-fish_add_path /usr/local/opt/mysql@5.7/bin
 set -x LDFLAGS "-L/usr/local/opt/mysql@5.7/lib"
 set -x CPPFLAGS "-I/usr/local/opt/mysql@5.7/include"
 set -x ZSH "$HOME/.oh-my-zsh"
 
+fish_add_path /usr/local/opt/mysql@5.7/bin
 fish_add_path /usr/local/mysql/bin
 fish_add_path /Users/ronsha/Library/Android/sdk/platform-tools/
 fish_add_path /Users/ronsha/.local/bin/
@@ -67,10 +67,15 @@ bass source $HOME/.cargo/env
 # NVM
 set -x NVM_DIR "$HOME/.nvm"
 
+# Alias ls
+alias ll='exa -l --git --time-style=long-iso --group-directories-first'
+alias ls='exa --group-directories-first'
+alias tree='exa -T'
+
 # Alias codelldb
 alias codelldb=$HOME/codelldb/extension/adapter/codelldb
 
-# Alias nvim
+# Alias vim
 alias nvim=$HOME/apps/nvim/bin/nvim
 alias vim="nvim"
 alias vi="nvim"
@@ -262,6 +267,6 @@ complete -c gh -e
 # which provides the program's completion choices.
 complete -c gh -n '__gh_prepare_completions' -f -a '$__gh_comp_results'
 
-source ~/.config/fish/kanagawa-theme.fish
+source $HOME/.config/fish/kanagawa-theme.fish
 
 source (/usr/local/bin/starship init fish --print-full-init | psub)
