@@ -3,7 +3,7 @@
 FROM alpine:latest
 
 # Essentials
-RUN apk add --no-cache sudo bash git ansible
+RUN apk add --no-cache sudo bash git curl ansible
 
 # User
 ARG user=username
