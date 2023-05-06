@@ -1,13 +1,43 @@
 # Mac stuff
-set -x PATH "/usr/local/opt/mysql@5.7/bin:$PATH"
+# TODO: move to local config
+fish_add_path /usr/local/opt/mysql@5.7/bin
 set -x LDFLAGS "-L/usr/local/opt/mysql@5.7/lib"
 set -x CPPFLAGS "-I/usr/local/opt/mysql@5.7/include"
-set -x ZSH "/Users/yaakov/.oh-my-zsh"
-set PATH $PATH:/usr/local/mysql/bin
-set PATH $PATH:/Users/ronsha/Library/Android/sdk/platform-tools/
-set PATH $PATH:/Users/ronsha/.local/bin/
+set -x ZSH "$HOME/.oh-my-zsh"
 
-bass source ~/.k8s-aliases
+fish_add_path /usr/local/mysql/bin
+fish_add_path /Users/ronsha/Library/Android/sdk/platform-tools/
+fish_add_path /Users/ronsha/.local/bin/
+
+alias k="kubectl"
+alias ct_pods="kubectl get pods"
+alias ct_port_forward="kubectl port-forward"
+alias ct_rabbitmq_logs="kubectl logs -n rabbitmq -l app.kubernetes.io/component=rabbitmq,app.kubernetes.io/name=rabbitmq --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_rabbitmq_bi_logs="kubectl logs -n rabbitmq -l app.kubernetes.io/component=rabbitmq,app.kubernetes.io/name=rabbitmq-bi --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_elastic_logs="kubectl logs -n elastic -l common.k8s.elastic.co/type=elasticsearch --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_logstash_logs="kubectl logs -n elastic -l app=logstash --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_pymobiengine_logs="kubectl logs -l app=pymobiengine -c pymobiengine --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_pymobiengine_chat_logs="kubectl logs -l app=pymobiengine-chat -c pymobiengine --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_mobimanagement_logs="kubectl logs -l app=mobimanagement -c mobimanagement --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_pymobiengine_workers_logs="kubectl logs -l connecteamClass=worker -c worker --max-log-requests 100 --ignore-errors=true --follow=true"
+alias ct_biengine_logs="kubectl logs -l app=biengine -c biengine --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_matrix_logs="kubectl logs -l app=matrix -c matrix --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_matrix_workers_logs="kubectl logs -l connecteamClass=matrix-worker -c matrix-worker --max-log-requests=101 --ignore-errors=true --follow=true"
+alias ct_matrixapp_logs="kubectl logs -l app=matrixapp -c matrixapp --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_mongod_logs="kubectl logs -n mongo -l app.kubernetes.io/component=mongod -c mongod --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_mongos_logs="kubectl logs -n mongo -l app.kubernetes.io/component=mongos -c mongos --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_mysql_logs="kubectl logs -n vitess -c mysqld -l planetscale.com/keyspace=pymobiengine,planetscale.com/component=vttablet --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_vttablet_logs="kubectl logs -n vitess -c vttablet -l planetscale.com/keyspace=pymobiengine,planetscale.com/component=vttablet --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_vtgate_logs="kubectl logs -n vitess -l planetscale.com/component=vtgate --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_redis_leaders_logs="kubectl logs -n redis -l app=redis-leader -c redis-leader --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_redis_followers_logs="kubectl logs -n redis -l app=redis-follower -c redis-follower --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_redis_bi_leaders_logs="kubectl logs -n redis -l app=redis-bi-leader -c redis-bi-leader --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_redis_bi_followers_logs="kubectl logs -n redis -l app=redis-bi-follower -c redis-bi-follower --max-log-requests=100 --ignore-errors=true --follow=true"
+alias ct_pymobiengine_shell="kubectl exec --stdin=true --tty=true pymobiengine-shell-0 -- bash"
+alias ct_biengine_shell="kubectl exec --stdin=true --tty=true biengine-shell-0 -- bash"
+alias ct_matrix_shell="kubectl exec --stdin=true --tty=true matrix-shell-0 -- bash"
+alias ct_mongo_shell="kubectl exec --stdin=true --tty=true -n mongo mongo-shell-0 -- bash"
+alias ct_vitess_shell="kubectl exec --stdin=true --tty=true -n vitess vitess-shell-0 -- bash"
 
 # Vi mode
 fish_vi_key_bindings
@@ -31,8 +61,10 @@ set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
 set -x LC_TYPE en_US.UTF-8
 
+# Cargo
 bass source $HOME/.cargo/env
 
+# NVM
 set -x NVM_DIR "$HOME/.nvm"
 
 # Alias codelldb
@@ -49,7 +81,7 @@ alias python=python3
 alias pip=pip3
 
 # rust analyzer
-set PATH $HOME/.local/bin:$PATH
+fish_add_path $HOME/.local/bin
 
 set -x DISPLAY :0
 
