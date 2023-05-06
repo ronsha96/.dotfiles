@@ -1,17 +1,22 @@
 # syntax=docker/dockerfile:experimental
 
-FROM ubuntu:latest
+FROM alpine:latest
 
 # Essentials
-RUN apt update
-RUN apt install -y sudo git
+RUN apk add --no-cache bash git
 
 # User
 ARG user=username
 ARG home=/home/username
 
-RUN useradd --create-home --shell /bin/bash --no-log-init $user
+RUN addgroup -S docker
+
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home $home \
+    --ingroup docker \
+    $user
 
 USER $user
 WORKDIR $home
-
