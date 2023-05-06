@@ -4,7 +4,7 @@ FROM ubuntu:latest
 
 # Essentials
 RUN apt update
-RUN apt install -y sudo git ansible
+RUN apt install -y sudo git
 
 # User
 ARG user=username
