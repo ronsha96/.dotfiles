@@ -38,7 +38,7 @@ alias python=python3
 alias pip=pip3
 
 # rust analyzer
-set PATH $HOME/.local/bin:$PATH
+fish_add_path $HOME/.local/bin
 
 set -x DISPLAY :0
 
