@@ -1,4 +1,4 @@
-tag=dotfiles:latest
+image=dotfiles:latest
 
-docker build -t $tag .
-docker run --interactive --tty --rm --user username $tag
+docker build -t $image .
+docker run -t -i $image

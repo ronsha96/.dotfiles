@@ -1,22 +1,16 @@
 # syntax=docker/dockerfile:experimental
 
-FROM alpine:latest
+FROM ubuntu:latest
 
 # Essentials
-RUN apk add --no-cache bash git
+RUN apt update
+RUN apt install -y sudo git ansible
 
 # User
 ARG user=username
 ARG home=/home/username
 
-RUN addgroup -S docker
-
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home $home \
-    --ingroup docker \
-    $user
+RUN useradd --create-home --shell /bin/bash --no-log-init $user
 
 USER $user
 WORKDIR $home
