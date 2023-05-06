@@ -1,6 +1,21 @@
 # syntax=docker/dockerfile:experimental
 
-FROM opensuse/tumbleweed:latest
-RUN zypper ref && zypper up -y
-RUN zypper in -y git
-RUN zypper clean --all
+FROM alpine:latest
+
+# Essentials
+RUN apk add --no-cache bash git
+
+# User
+ARG user=username
+ARG home=/home/username
+
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home $home \
+    --ingroup docker \
+    $user
+
+USER $user
+WORKDIR $home
+

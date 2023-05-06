@@ -1,1 +1,4 @@
-docker build -t r0nsha/dotfiles .
+tag=dotfiles:latest
+
+docker build -t $tag .
+docker run --interactive --tty --rm --user username $tag
