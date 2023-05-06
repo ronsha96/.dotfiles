@@ -15,6 +15,10 @@ set fish_cursor_replace_one underscore
 # visual mode, but due to fish_cursor_default, is redundant here
 set fish_cursor_visual block
 
+# Set VIM as my default editor
+set -x EDITOR vim
+
+# Set lang to UTF-8
 set -x LANGUAGE en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
@@ -24,6 +28,7 @@ set -x LC_TYPE en_US.UTF-8
 bass source $HOME/.cargo/env
 fish_add_path $HOME/.local/bin
 
+# Node stuff
 set -x NVM_DIR "$HOME/.nvm"
 
 # Alias codelldb
