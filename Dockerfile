@@ -9,6 +9,8 @@ RUN apk add --no-cache bash git
 ARG user=username
 ARG home=/home/username
 
+RUN addgroup -S docker
+
 RUN adduser \
     --disabled-password \
     --gecos "" \
