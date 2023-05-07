@@ -14,6 +14,7 @@ $git_branch\
 $git_state\
 $git_status\
 $git_metrics\
+$fill\
 $all\
 $line_break\
 $character"""
@@ -21,12 +22,15 @@ $character"""
 right_format = """
 $cmd_duration\
 $jobs\
-$time"""
+$time """
 
 [character]
 success_symbol = "[❯](green)"
 error_symbol = "[❯](bold red)"
 vimcmd_symbol = "[❮](purple)"
+
+[fill]
+symbol = " "
 
 [jobs]
 symbol = ""
@@ -178,6 +182,7 @@ Windows = " "
 
 [package]
 symbol = " "
+format = '\[[$symbol$version]($style)\] '
 
 # [pijul_channel]
 # symbol = "🪺 "
