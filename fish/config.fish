@@ -56,15 +56,20 @@ set fish_cursor_replace_one underscore
 # visual mode, but due to fish_cursor_default, is redundant here
 set fish_cursor_visual block
 
+# Set VIM as my default editor
+set -x EDITOR vim
+
+# Set lang to UTF-8
 set -x LANGUAGE en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
 set -x LC_TYPE en_US.UTF-8
 
-# Cargo
+# Rust stuff
 bass source $HOME/.cargo/env
+fish_add_path $HOME/.local/bin
 
-# NVM
+# Node stuff
 set -x NVM_DIR "$HOME/.nvm"
 
 # Alias ls
@@ -84,11 +89,6 @@ alias v="nvim"
 # Alias python & pip
 alias python=python3
 alias pip=pip3
-
-# rust analyzer
-fish_add_path $HOME/.local/bin
-
-set -x DISPLAY :0
 
 # fish completion for gh                                   -*- shell-script -*-
 
