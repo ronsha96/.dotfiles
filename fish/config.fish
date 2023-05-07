@@ -85,9 +85,6 @@ alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale'	# all + e
 alias lS='exa -1'                                                       # one column, just names
 alias lt='exa --tree --level=2'                                         # tree
 
-# Alias zoxide
-alias cd='z'
-
 # Alias codelldb
 alias codelldb=$HOME/codelldb/extension/adapter/codelldb
 
