@@ -269,4 +269,6 @@ complete -c gh -n '__gh_prepare_completions' -f -a '$__gh_comp_results'
 
 source $HOME/.config/fish/kanagawa-theme.fish
 
+zoxide init fish | source
+
 source (/usr/local/bin/starship init fish --print-full-init | psub)
